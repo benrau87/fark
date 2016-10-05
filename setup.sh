@@ -1,9 +1,6 @@
 #!/bin/bash
-###Run as root, installs GRR
-###
-#Clients will install with pointers to the server hostname
-#If you have not setup a DNS A-record for this machine, you will #need to before the clients can contact the server.
-
+###Clients will install with pointers to the server hostname
+###If you have not setup a DNS A-record for this machine, you will #need to before the clients can contact the server.
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
@@ -130,6 +127,7 @@ cp -r /$HOME/Desktop/GRR_ELK_Setup/packetbeat /$HOME/Desktop/clientinstall.$HOST
 read -p "Do you want to install forensic tools? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    echo ""
     
     mkdir ~/Desktop/Cases 
     mkdir ~/Desktop/Tools
