@@ -30,18 +30,68 @@ apt-get update && apt-get dist-upgrade -y
 sleep 5
 
 ##################################Test
-###REnux Install
-echo
-echo Installing REnux
-wget --quiet -O - https://remnux.org/get-remnux.sh | sudo bash
-echo
-sleep 5
-###SANS-SIFT tools
-echo
-echo "Installing SIFT toolkit"
-echo
-wget --quiet -O - https://raw.github.com/sans-dfir/sift-bootstrap/master/bootstrap.sh | sudo bash -s -- -i -s -y
-sleep 5
+###Forensic tools install
+apt-get -y -qq install ctags curl git vim vim-doc vim-scripts \
+    exfat-fuse exfat-utils zip python-virtualenv tshark
+    
+ mkdir ~/Desktop/Cases
+ mkdir ~/Desktop/Tools
+ 
+ # Add scripts from different sources
+# http://phishme.com/powerpoint-and-custom-actions/
+[ ! -e ~/src/bin/psparser.py ] && wget -q -O ~/src/bin/psparser.py \
+    https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
+    chmod +x ~/src/bin/psparser.py && \
+    info-message "Installed psparser.py"
+# https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
+[ ! -e ~/src/bin/vt.py ] && wget -q -O ~/src/bin/vt.py \
+    https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
+    chmod +x ~/src/bin/vt.py && \
+    info-message "Installed vt.py."
+# https://testssl.sh/
+[ ! -e ~/src/bin/testssl.sh ] && wget -q -O ~/src/bin/testssl.sh \
+    https://testssl.sh/testssl.sh && \
+    chmod +x ~/src/bin/testssl.sh && \
+    info-message "Installed testssl.sh."
+
+# Add git repos
+# http://www.tekdefense.com/automater/
+[ ! -d ~/src/git/TekDefense-Automater ] && \
+    git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git \
+    ~/src/git/TekDefense-Automater && \
+    info-message "Checked out Automater."
+
+# https://n0where.net/malware-analysis-damm/
+[ ! -d ~/src/git/DAMM ] && \
+    git clone --quiet https://github.com/504ensicsLabs/DAMM \
+    ~/src/git/DAMM && \
+    info-message "Checked out DAMM."
+
+# https://github.com/keydet89/RegRipper2.8
+[ ! -d ~/src/git/RegRipper2.8 ] && \
+    git clone --quiet https://github.com/keydet89/RegRipper2.8.git \
+    ~/src/git/RegRipper2.8 && \
+    info-message "Checked out RegRipper2.8." && \
+    cp ~/remnux-tools/files/regripper2.8 ~/src/bin/regripper2.8 && \
+    chmod 755 ~/src/bin/regripper2.8
+
+# https://github.com/DidierStevens/DidierStevensSuite
+[ ! -d ~/src/git/DidierStevensSuite ] && \
+    git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git \
+    ~/src/git/DidierStevensSuite && \
+    info-message "Checked out DidierStevensSuite." && \
+    enable-new-didier
+
+# https://github.com/Yara-Rules/rules.git
+[ ! -d ~/src/git/rules ] && \
+    git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules && \
+    info-message "Checked out Yara-Rules."
+
+# https://github.com/decalage2/oletools.git
+[ ! -d ~/src/git/oletools ] && \
+    git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools && \
+    info-message "Checked out oletools."
+
 ####################################End test
 
 ####GRR Install
