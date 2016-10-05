@@ -131,11 +131,10 @@ read -p "Do you want to install forensic tools? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-    echo "Installing Forensic Tools"
-
     apt-get -y -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark
     
-    mkdir ~/Desktop/Cases && ~/Desktop/Tools
+    mkdir ~/Desktop/Cases 
+    mkdir ~/Desktop/Tools
 
  
 # Add scripts from different sources
