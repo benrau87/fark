@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
-echo "Installing dependencies"
+echo "Adding Repos"
 echo
 echo
 
@@ -22,8 +22,8 @@ echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
 
 sleep 5
-
-apt-get update 
+echo "Updating APT and installing dependencies"
+apt-get -qq update 
 
 apt-get -y -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark
 sleep 5
@@ -34,12 +34,13 @@ echo "Installing GRR"
 echo
 
 
-wget https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
+wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
 
 sleep 2
 
 sudo bash install_script_ubuntu.sh
 
+sleep 2
 ###Copy exe's to Desktop
 echo
 echo
@@ -53,8 +54,9 @@ cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.
 sleep 2
 
 ###Install ELK Stack
+echo "Installing ELK Stack"
 
-apt-get -y install oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash
+apt-get -qq -y install oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash
 
 ###Elastisearch
 
@@ -105,7 +107,7 @@ cp /$HOME/Desktop/GRR_ELK_Setup/30-elasticsearch-output.conf /etc/logstash/conf.
 
 ###Install netflow dashboards for Kibana
 cd ~
-curl -L -O https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
+curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
 
 apt-get -y install unzip
 
@@ -117,7 +119,7 @@ cd beats-dashboards-*
 ./load.sh
 
 ###Configure packetbeat clients
- cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/GRR_ELK_Setup/packetbeat/
+cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/GRR_ELK_Setup/packetbeat/
 
 cp -r /$HOME/Desktop/GRR_ELK_Setup/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
 
