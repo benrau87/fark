@@ -25,6 +25,8 @@ echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -
 
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
 
+sleep 5
+
 apt-get update 
 
 sleep 5
@@ -98,7 +100,7 @@ sleep 5
 
 echo "Installing GRR"
 echo
-cd /$HOME
+
 
 wget https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
 
