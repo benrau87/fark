@@ -25,7 +25,7 @@ echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -
 
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
 
-#apt-get update && apt-get dist-upgrade
+apt-get update 
 
 sleep 5
 
