@@ -100,10 +100,9 @@ cd /etc/pki/tls; sudo openssl req -subj '/CN=$HOSTNAME/' -x509 -days 3650 -batch
 
 ###Setup Beats for Logstash input to Elastisearch output
 
-cp /$HOME/Desktop/GRR_ELK_Setup/02-beats-input.conf /etc/logstash/conf.d/
+cp ~/forensic-grr-elk/02-beats-input.conf /etc/logstash/conf.d/
 
-
-cp /$HOME/Desktop/GRR_ELK_Setup/30-elasticsearch-output.conf /etc/logstash/conf.d/
+cp ~/forensic-grr-elk/30-elasticsearch-output.conf /etc/logstash/conf.d/
 
 ###Install netflow dashboards for Kibana
 cd ~
@@ -119,9 +118,8 @@ cd beats-dashboards-*
 ./load.sh
 
 ###Configure packetbeat clients
-cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/GRR_ELK_Setup/packetbeat/
-
-cp -r /$HOME/Desktop/GRR_ELK_Setup/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r ~/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/packetbeat/
 
 
 ##################################Test
