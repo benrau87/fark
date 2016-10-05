@@ -173,11 +173,11 @@ then
     echo "Checked out DidierStevensSuite." 
 
 # https://github.com/Yara-Rules/rules.git
-    git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules 
+    git clone --quiet https://github.com/Yara-Rules/rules.git 
     echo "Checked out Yara-Rules."
 
 # https://github.com/decalage2/oletools.git
-    git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools 
+    git clone --quiet https://github.com/decalage2/oletools.git 
     echo "Checked out oletools."
 fi
 
