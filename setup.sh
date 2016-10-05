@@ -31,60 +31,6 @@ apt-get update
 
 sleep 5
 
-##################################Test
-###Forensic tools install
-apt-get -y -qq install ctags curl git vim vim-doc vim-scripts \
-    exfat-fuse exfat-utils zip python-virtualenv tshark
-    
-mkdir ~/Desktop/Cases && ~/Desktop/Tools
-
- 
-# Add scripts from different sources
-# http://phishme.com/powerpoint-and-custom-actions/
-wget -q -O ~/Desktop/Tools/psparser.py \
-    https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
-    chmod +x ~/Desktop/Tools/psparser.py 
- echo "Installed psparser.py"
- 
-# https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
-wget -q -O ~/Desktop/Tools/vt.py \
-    https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
-    chmod +x ~/Desktop/Tools/vt.py 
- echo "Installed vt.py"
- 
-# https://testssl.sh/
-wget -q -O ~/Desktop/Tools/testssl.sh \
-    https://testssl.sh/testssl.sh && \
-    chmod +x ~/Desktop/Tools/testssl.sh 
-echo "Installed testssl.sh."
-
-# Add git repos
-# http://www.tekdefense.com/automater/
-git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git ~/Desktop/Tools/
-echo "Checked out Automater."
-
-# https://n0where.net/malware-analysis-damm/
-git clone --quiet https://github.com/504ensicsLabs/DAMM ~/Desktop/Tools/
-echo info-message "Checked out DAMM."
-
-# https://github.com/keydet89/RegRipper2.8
-git clone --quiet https://github.com/keydet89/RegRipper2.8.git ~/Desktop/Tools/
-echo "Checked out RegRipper2.8." 
-
-# https://github.com/DidierStevens/DidierStevensSuite
-git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git ~/Desktop/Tools/
-echo "Checked out DidierStevensSuite." 
-
-# https://github.com/Yara-Rules/rules.git
-git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules ~/Desktop/Tools/
-echo "Checked out Yara-Rules."
-
-# https://github.com/decalage2/oletools.git
-git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools ~/Desktop/Tools/
-echo "Checked out oletools."
-
-####################################End test
-
 ####GRR Install
 
 echo "Installing GRR"
@@ -178,6 +124,67 @@ cd beats-dashboards-*
 
 cp -r /$HOME/Desktop/GRR_ELK_Setup/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
 
+
+##################################Test
+###Forensic tools install
+
+if ask "Do you want to install forensic tools?" Y; then
+
+echo Installing Forensic Tools
+
+apt-get -y -qq install ctags curl git vim vim-doc vim-scripts \
+    exfat-fuse exfat-utils zip python-virtualenv tshark
+    
+mkdir ~/Desktop/Cases && ~/Desktop/Tools
+
+ 
+# Add scripts from different sources
+# http://phishme.com/powerpoint-and-custom-actions/
+wget -q -O ~/Desktop/Tools/psparser.py \
+    https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
+    chmod +x ~/Desktop/Tools/psparser.py 
+ echo "Installed psparser.py"
+ 
+# https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
+wget -q -O ~/Desktop/Tools/vt.py \
+    https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
+    chmod +x ~/Desktop/Tools/vt.py 
+ echo "Installed vt.py"
+ 
+# https://testssl.sh/
+wget -q -O ~/Desktop/Tools/testssl.sh \
+    https://testssl.sh/testssl.sh && \
+    chmod +x ~/Desktop/Tools/testssl.sh 
+echo "Installed testssl.sh."
+
+cd  ~/Desktop/Tools/
+
+# Add git repos
+# http://www.tekdefense.com/automater/
+git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git 
+echo "Checked out Automater."
+
+# https://n0where.net/malware-analysis-damm/
+git clone --quiet https://github.com/504ensicsLabs/DAMM 
+
+# https://github.com/keydet89/RegRipper2.8
+git clone --quiet https://github.com/keydet89/RegRipper2.8.git
+echo "Checked out RegRipper2.8." 
+
+# https://github.com/DidierStevens/DidierStevensSuite
+git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git 
+echo "Checked out DidierStevensSuite." 
+
+# https://github.com/Yara-Rules/rules.git
+git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules 
+echo "Checked out Yara-Rules."
+
+# https://github.com/decalage2/oletools.git
+git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools 
+echo "Checked out oletools."
+fi
+
+####################################End test
 echo
 echo
 echo "Your GRR-ELK stack has been installed, client installations are located on your desktop in a folder called clientinstall.$HOSTNAME"
