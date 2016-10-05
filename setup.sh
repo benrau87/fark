@@ -28,6 +28,22 @@ echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee
 apt-get update && apt-get dist-upgrade -y
 
 sleep 5
+
+##################################Test
+###REnux Install
+echo
+echo Installing REnux
+wget --quiet -O - https://remnux.org/get-remnux.sh | sudo bash
+echo
+sleep 5
+###SANS-SIFT tools
+echo
+echo "Installing SIFT toolkit"
+echo
+wget --quiet -O - https://raw.github.com/sans-dfir/sift-bootstrap/master/bootstrap.sh | sudo bash -s -- -i -s -y
+sleep 5
+####################################End test
+
 ####GRR Install
 
 echo "Installing GRR"
