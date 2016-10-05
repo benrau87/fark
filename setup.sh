@@ -131,58 +131,57 @@ installtools(){
 
   if ask "Do you want to install forensic tools?" Y; then
 
-  echo Installing Forensic Tools
+    echo "Installing Forensic Tools"
 
-  apt-get -y -qq install ctags curl git vim vim-doc vim-scripts \
-    exfat-fuse exfat-utils zip python-virtualenv tshark
+    apt-get -y -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark
     
-  mkdir ~/Desktop/Cases && ~/Desktop/Tools
+    mkdir ~/Desktop/Cases && ~/Desktop/Tools
 
  
 # Add scripts from different sources
 # http://phishme.com/powerpoint-and-custom-actions/
-  wget -q -O ~/Desktop/Tools/psparser.py \
+    wget -q -O ~/Desktop/Tools/psparser.py \
     https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
     chmod +x ~/Desktop/Tools/psparser.py 
- echo "Installed psparser.py"
+    echo "Installed psparser.py"
  
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
-  wget -q -O ~/Desktop/Tools/vt.py \
+    wget -q -O ~/Desktop/Tools/vt.py \
     https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
     chmod +x ~/Desktop/Tools/vt.py 
- echo "Installed vt.py"
+    echo "Installed vt.py"
  
 # https://testssl.sh/
-  wget -q -O ~/Desktop/Tools/testssl.sh \
+    wget -q -O ~/Desktop/Tools/testssl.sh \
     https://testssl.sh/testssl.sh && \
     chmod +x ~/Desktop/Tools/testssl.sh 
-  echo "Installed testssl.sh."
+    echo "Installed testssl.sh."
 
-  cd  ~/Desktop/Tools/
+    cd  ~/Desktop/Tools/
 
 # Add git repos
 # http://www.tekdefense.com/automater/
-  git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git 
-  echo "Checked out Automater."
+    git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git 
+    echo "Checked out Automater."
 
 # https://n0where.net/malware-analysis-damm/
-  git clone --quiet https://github.com/504ensicsLabs/DAMM 
+    git clone --quiet https://github.com/504ensicsLabs/DAMM 
 
 # https://github.com/keydet89/RegRipper2.8
-  git clone --quiet https://github.com/keydet89/RegRipper2.8.git
-  echo "Checked out RegRipper2.8." 
+    git clone --quiet https://github.com/keydet89/RegRipper2.8.git
+    echo "Checked out RegRipper2.8." 
 
 # https://github.com/DidierStevens/DidierStevensSuite
-  git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git 
-  echo "Checked out DidierStevensSuite." 
+    git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git 
+    echo "Checked out DidierStevensSuite." 
 
 # https://github.com/Yara-Rules/rules.git
-  git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules 
-  echo "Checked out Yara-Rules."
+    git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules 
+    echo "Checked out Yara-Rules."
 
 # https://github.com/decalage2/oletools.git
-  git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools 
-  echo "Checked out oletools."
+    git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools 
+    echo "Checked out oletools."
   fi
 }
 ####################################End test
