@@ -33,66 +33,55 @@ sleep 5
 
 ##################################Test
 ###Forensic tools install
-#apt-get -y -qq install ctags curl git vim vim-doc vim-scripts \
-#    exfat-fuse exfat-utils zip python-virtualenv tshark
+apt-get -y -qq install ctags curl git vim vim-doc vim-scripts \
+    exfat-fuse exfat-utils zip python-virtualenv tshark
     
- #mkdir ~/Desktop/Cases
- #mkdir ~/Desktop/Tools
+mkdir ~/Desktop/Cases && ~/Desktop/Tools
+
  
- # Add scripts from different sources
+# Add scripts from different sources
 # http://phishme.com/powerpoint-and-custom-actions/
-# wget -q -O ~/Desktop/Tools/psparser.py \
- #   https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
-  #  chmod +x ~/Desktop/Tools/psparser.py && \
-   # info-message "Installed psparser.py"
+wget -q -O ~/Desktop/Tools/psparser.py \
+    https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
+    chmod +x ~/Desktop/Tools/psparser.py 
+ echo "Installed psparser.py"
+ 
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
-#[ ! -e ~/src/bin/vt.py ] && wget -q -O ~/src/bin/vt.py \
- #   https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
-  #  chmod +x ~/src/bin/vt.py && \
-   # info-message "Installed vt.py."
+wget -q -O ~/Desktop/Tools/vt.py \
+    https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
+    chmod +x ~/Desktop/Tools/vt.py 
+ echo "Installed vt.py"
+ 
 # https://testssl.sh/
-#[ ! -e ~/src/bin/testssl.sh ] && wget -q -O ~/src/bin/testssl.sh \
- #   https://testssl.sh/testssl.sh && \
-  #  chmod +x ~/src/bin/testssl.sh && \
-   # info-message "Installed testssl.sh."
+wget -q -O ~/Desktop/Tools/testssl.sh \
+    https://testssl.sh/testssl.sh && \
+    chmod +x ~/Desktop/Tools/testssl.sh 
+echo "Installed testssl.sh."
 
 # Add git repos
 # http://www.tekdefense.com/automater/
-#[ ! -d ~/src/git/TekDefense-Automater ] && \
- #   git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git \
-  #  ~/src/git/TekDefense-Automater && \
-   # info-message "Checked out Automater."
+git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git ~/Desktop/Tools/
+echo "Checked out Automater."
 
 # https://n0where.net/malware-analysis-damm/
-#[ ! -d ~/src/git/DAMM ] && \
- #   git clone --quiet https://github.com/504ensicsLabs/DAMM \
-  #  ~/src/git/DAMM && \
-   # info-message "Checked out DAMM."
+git clone --quiet https://github.com/504ensicsLabs/DAMM ~/Desktop/Tools/
+echo info-message "Checked out DAMM."
 
 # https://github.com/keydet89/RegRipper2.8
-#[ ! -d ~/src/git/RegRipper2.8 ] && \
- #   git clone --quiet https://github.com/keydet89/RegRipper2.8.git \
-  #  ~/src/git/RegRipper2.8 && \
-   # info-message "Checked out RegRipper2.8." && \
-    #cp ~/remnux-tools/files/regripper2.8 ~/src/bin/regripper2.8 && \
-    #chmod 755 ~/src/bin/regripper2.8
+git clone --quiet https://github.com/keydet89/RegRipper2.8.git ~/Desktop/Tools/
+echo "Checked out RegRipper2.8." 
 
 # https://github.com/DidierStevens/DidierStevensSuite
-#[ ! -d ~/src/git/DidierStevensSuite ] && \
- #   git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git \
-  #  ~/src/git/DidierStevensSuite && \
-   # info-message "Checked out DidierStevensSuite." && \
-    #enable-new-didier
-#
+git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git ~/Desktop/Tools/
+echo "Checked out DidierStevensSuite." 
+
 # https://github.com/Yara-Rules/rules.git
-#[ ! -d ~/src/git/rules ] && \
- #   git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules && \
-  #  info-message "Checked out Yara-Rules."
+git clone --quiet https://github.com/Yara-Rules/rules.git ~/src/git/rules ~/Desktop/Tools/
+echo "Checked out Yara-Rules."
 
 # https://github.com/decalage2/oletools.git
-#[ ! -d ~/src/git/oletools ] && \
- #   git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools && \
-  #  info-message "Checked out oletools."
+git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools ~/Desktop/Tools/
+echo "Checked out oletools."
 
 ####################################End test
 
