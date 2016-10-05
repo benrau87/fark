@@ -127,9 +127,9 @@ cp -r /$HOME/Desktop/GRR_ELK_Setup/packetbeat /$HOME/Desktop/clientinstall.$HOST
 
 ##################################Test
 ###Forensic tools install
-installtools(){
-
-  if ask "Do you want to install forensic tools?" Y; then
+read -p "Do you want to install forensic tools? Y/N" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
 
     echo "Installing Forensic Tools"
 
@@ -182,8 +182,8 @@ installtools(){
 # https://github.com/decalage2/oletools.git
     git clone --quiet https://github.com/decalage2/oletools.git ~/src/git/oletools 
     echo "Checked out oletools."
-  fi
-}
+fi
+
 ####################################End test
 echo
 echo
