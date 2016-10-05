@@ -41,9 +41,9 @@ sleep 5
  
  # Add scripts from different sources
 # http://phishme.com/powerpoint-and-custom-actions/
-#[ ! -e ~/src/bin/psparser.py ] && wget -q -O ~/src/bin/psparser.py \
+# wget -q -O ~/Desktop/Tools/psparser.py \
  #   https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
-  #  chmod +x ~/src/bin/psparser.py && \
+  #  chmod +x ~/Desktop/Tools/psparser.py && \
    # info-message "Installed psparser.py"
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
 #[ ! -e ~/src/bin/vt.py ] && wget -q -O ~/src/bin/vt.py \
