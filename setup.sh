@@ -22,13 +22,13 @@ echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sud
 
 echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
 
-
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
 
 sleep 5
 
 apt-get update 
 
+apt-get -y -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark
 sleep 5
 
 ####GRR Install
@@ -130,8 +130,6 @@ cp -r /$HOME/Desktop/GRR_ELK_Setup/packetbeat /$HOME/Desktop/clientinstall.$HOST
 read -p "Do you want to install forensic tools? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-
-    apt-get -y -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark
     
     mkdir ~/Desktop/Cases 
     mkdir ~/Desktop/Tools
