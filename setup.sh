@@ -104,6 +104,8 @@ cp ~/forensic-grr-elk/02-beats-input.conf /etc/logstash/conf.d/
 
 cp ~/forensic-grr-elk/30-elasticsearch-output.conf /etc/logstash/conf.d/
 
+service logstash start
+
 ###Install netflow dashboards for Kibana
 cd ~
 curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
