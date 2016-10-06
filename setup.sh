@@ -133,6 +133,8 @@ then
     
     mkdir ~/Desktop/Cases 
     mkdir ~/Desktop/Tools
+    chown $USER:$USER ~/Desktop/Cases/
+    chown $USER:$USER ~/Desktop/Tools/
 
  
 # Add scripts from different sources
