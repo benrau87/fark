@@ -107,7 +107,7 @@ cp ~/forensic-grr-elk/30-elasticsearch-output.conf /etc/logstash/conf.d/
 service logstash start
 
 ###Install netflow dashboards for Kibana
-cd ~
+cd  ~/forensic-grr-elk/
 curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
 
 apt-get -y install unzip
@@ -119,6 +119,13 @@ unzip beats-dashboards-*.zip
 cd beats-dashboards-*
 ./load.sh
 
+###SOF-ELK setup
+read -p "Do you want to install SOF-ELK dashboards and configurations? Y/N" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  git clone https://github.com/philhagen/sof-elk.git
+  cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
+  
 ###Configure packetbeat clients
 cp -r ~/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
 cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/packetbeat/
