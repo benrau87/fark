@@ -131,8 +131,7 @@ then
   cp ~/forensic-grr-elk/sof-elk/dashboards/index-patterns/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
   
   cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
-    cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/search/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/search/
-      cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/visualization/
+    cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/visualization/
   
   cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
     cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/search/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/search/
