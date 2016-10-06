@@ -60,9 +60,9 @@ apt-get -qq -y install oracle-java8-installer elasticsearch kibana nginx apache2
 
 ###Elastisearch
 
-service elasticsearch start
-
 update-rc.d elasticsearch defaults 95 10
+service elasticsearch start
+systemctl enable elasticsearch.service
 
 sleep 2
 
@@ -71,8 +71,8 @@ sleep 2
 echo "server.host: 127.0.0.1" | tee -a /opt/kibana/config/kibana.yml 
 
 update-rc.d kibana defaults 96 9
-
 service kibana start
+systemctl enable elasticsearch.service
 
 sleep 2
 
@@ -96,7 +96,7 @@ sleep 2
 mkdir -p /etc/pki/tls/certs
 mkdir /etc/pki/tls/private
 
-cd /etc/pki/tls; sudo openssl req -subj '/CN=$HOSTNAME/' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+cd /etc/pki/tls; sudo openssl req -subj '/CN=GRR_Server/' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
 
 ###Setup Beats for Logstash input to Elastisearch output
 
