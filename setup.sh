@@ -138,7 +138,7 @@ then
 
  
 # Add scripts from different sources
- 
+    cd ~/Desktop/Tools/
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
     wget -q -O ~/Desktop/Tools/vt.py \
     https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
@@ -147,7 +147,7 @@ then
 
 # https://n0where.net/malware-analysis-damm/
     git clone --quiet https://github.com/504ensicsLabs/DAMM 
-
+    echo "Installed DAMM"
 # https://github.com/DidierStevens/DidierStevensSuite
     git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git 
     echo "Checked out DidierStevensSuite." 
@@ -163,12 +163,7 @@ then
     git clone --quiet https://github.com/USArmyResearchLab/Dshell.git
     echo "Checked  out DShell."
     
-    git clone --quiet https://github.com/VirusTotal/yara.git
-    echo "Download YARA framework."
-    cd yara
-    ./bootstrap.sh
-    ./configure
-    make && make install
+    apt-get install yara -y -qq
 fi
 
 ####################################End test
