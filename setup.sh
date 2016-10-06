@@ -138,42 +138,20 @@ then
 
  
 # Add scripts from different sources
-# http://phishme.com/powerpoint-and-custom-actions/
-    wget -q -O ~/Desktop/Tools/psparser.py \
-    https://github.com/phishme/malware_analysis/blob/master/scripts/psparser.py && \
-    chmod +x ~/Desktop/Tools/psparser.py 
-    echo "Installed psparser.py"
  
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
     wget -q -O ~/Desktop/Tools/vt.py \
     https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
     chmod +x ~/Desktop/Tools/vt.py 
     echo "Installed vt.py"
- 
-# https://testssl.sh/
-    wget -q -O ~/Desktop/Tools/testssl.sh \
-    https://testssl.sh/testssl.sh && \
-    chmod +x ~/Desktop/Tools/testssl.sh 
-    echo "Installed testssl.sh."
-
-    cd  ~/Desktop/Tools/
-
-# Add git repos
-# http://www.tekdefense.com/automater/
-    git clone --quiet https://github.com/1aN0rmus/TekDefense-Automater.git 
-    echo "Checked out Automater."
 
 # https://n0where.net/malware-analysis-damm/
     git clone --quiet https://github.com/504ensicsLabs/DAMM 
 
-# https://github.com/keydet89/RegRipper2.8
-    git clone --quiet https://github.com/keydet89/RegRipper2.8.git
-    echo "Checked out RegRipper2.8." 
-
 # https://github.com/DidierStevens/DidierStevensSuite
     git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git 
     echo "Checked out DidierStevensSuite." 
-
+    
 # https://github.com/Yara-Rules/rules.git
     git clone --quiet https://github.com/Yara-Rules/rules.git 
     echo "Checked out Yara-Rules."
@@ -181,6 +159,16 @@ then
 # https://github.com/decalage2/oletools.git
     git clone --quiet https://github.com/decalage2/oletools.git 
     echo "Checked out oletools."
+    
+    git clone --quiet https://github.com/USArmyResearchLab/Dshell.git
+    echo "Checked  out DShell."
+    
+    git clone --quiet https://github.com/VirusTotal/yara.git
+    echo "Download YARA framework."
+    cd yara
+    ./bootstrap.sh
+    ./configure
+    make && make install
 fi
 
 ####################################End test
