@@ -125,6 +125,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   git clone https://github.com/philhagen/sof-elk.git
   cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
+  cp ~/forensic-grr-elk/sof-elk/dashboards/index-patterns/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
+  cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
+  cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
+  cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
   
 ###Configure packetbeat clients
 cp -r ~/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
