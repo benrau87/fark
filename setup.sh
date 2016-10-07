@@ -142,6 +142,13 @@ cd ~/forensic-grr-elk/
 
 git clone https://github.com/philhagen/sof-elk.git
 
+#Remove SANS banner
+
+rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SANS*
+rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SOF*
+
+###Copy dashboards for later
+
   cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/dashboard/* $dash
     cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/search/* $search
       cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/visualization/* $vis
