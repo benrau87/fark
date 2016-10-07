@@ -10,8 +10,15 @@ index_patterns="httpdlog netflow syslog"
 kibana_version=$( jq -r '.version' < /opt/kibana/package.json )
 kibana_build=$(jq -r '.build.number' < /opt/kibana/package.json )
 
+#Remove SANS banner
+
+rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SANS*
+rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SOF*
+
+##Install
 dashboard_list="httpd introductory netflow syslog"
 dashboard_dir=~/forensic-grr-elk/sof-elk/dashboards/
+
 # enter a holding pattern until the elasticsearch server is available, but don't wait too long
 max_wait=60
 wait_step=0
