@@ -123,24 +123,36 @@ cd beats-dashboards-*
 read -p "Do you want to install SOF-ELK dashboards and configurations? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  git clone https://github.com/philhagen/sof-elk.git
-  cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
-    cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/search/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/search/
-      cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/visualization/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/visualization/
-      
-  cp ~/forensic-grr-elk/sof-elk/dashboards/index-patterns/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
-  
-  cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
-    cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/visualization/
-  
-  cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
-    cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/search/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/search/
-      cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/visualization/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/visualization/
-  
-  cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/dashboard/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/dashboard/
-   cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/search/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/search/
-      cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/visualization/* ~/forensic-grr-elk/beats-dashboards-*/dashboards/visualization/
+mkdir ~/forensic-grr-elk/dashboards
+mkdir ~/forensic-grr-elk/dashboards/dashboard
+mkdir ~/forensic-grr-elk/dashboards/search
+mkdir ~/forensic-grr-elk/dashboards/visualzation
 
+dash="~/forensic-grr-elk/dashboards/dashboard/"
+search="~/forensic-grr-elk/dashboards/search/"
+vis="~/forensic-grr-elk/dashboards/visualization/"
+
+chown $USER:$USER ~/forensic-grr-elk/dashboards
+cd ~/forensic-grr-elk/
+
+git clone https://github.com/philhagen/sof-elk.git
+
+  cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/dashboard/* $dash
+    cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/search/* $search
+      cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/visualization/* $vis
+      
+  cp ~/forensic-grr-elk/sof-elk/dashboards/index-patterns/* $dash
+  
+  cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/* $dash
+    cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/* $vis
+  
+  cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/dashboard/* $dash
+    cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/search/* $search
+      cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/visualization/* $vis
+  
+  cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/dashboard/* $dash
+   cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/search/* $search
+      cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/visualization/* $vis
 
 ###Configure packetbeat clients
 cp -r ~/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
