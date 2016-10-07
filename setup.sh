@@ -56,11 +56,11 @@ sleep 2
 
 ###Install ELK Stack
 echo "Installing ELK Stack"
-
+echo "Installing Dependencies"
 apt-get -qq -y install oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash
 
 ###Elastisearch
-
+echo "Installing Elasticsearch"
 update-rc.d elasticsearch defaults 95 10
 service elasticsearch start
 systemctl enable elasticsearch.service
@@ -68,7 +68,7 @@ systemctl enable elasticsearch.service
 sleep 2
 
 ###Kiabana
-
+echo "Installing Kibana"
 echo "server.host: 127.0.0.1" | tee -a /opt/kibana/config/kibana.yml 
 
 update-rc.d kibana defaults 96 9
