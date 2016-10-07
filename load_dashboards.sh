@@ -10,10 +10,7 @@ index_patterns="httpdlog netflow syslog"
 kibana_version=$( jq -r '.version' < /opt/kibana/package.json )
 kibana_build=$(jq -r '.build.number' < /opt/kibana/package.json )
 
-#Remove SANS banner
 
-rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SANS*
-rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SOF*
 
 ##Install
 dashboard_list="httpd introductory netflow syslog"
