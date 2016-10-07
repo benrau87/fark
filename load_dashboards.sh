@@ -1,5 +1,5 @@
 ARGC=$#
-apt-get install jq
+apt-get install jq -qq -y
 
 es_host=localhost
 es_port=9200
