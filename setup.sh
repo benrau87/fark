@@ -146,8 +146,17 @@ git clone https://github.com/philhagen/sof-elk.git
 
 rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SANS*
 rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SOF*
+rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/*
+
+cp ~/forensic-grr-elk/
 
 ###Copy dashboards for later
+
+cp ~/forensic-grr-elk/optiv_dash_vis ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/
+
+cp ~/forensic-grr-elk/optiv_image ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/
+
+cp ~/forensic-grr-elk/optiv_intro_dash ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/
 
   cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/dashboard/* $dash
     cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/search/* $search
