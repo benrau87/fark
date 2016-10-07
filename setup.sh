@@ -253,9 +253,7 @@ then
     apt-get install yara -y -qq
     
     #Volatility   
-    wget -q \
-    http://downloads.volatilityfoundation.org/releases/2.5/volatility_2.5.linux.standalone.zip && \
-    unzip ~/Desktop/Tools/*.zip
+    git clone --quiet https://github.com/volatilityfoundation/volatility.git
     echo "Dwonloaded Volatility"
 fi
 
