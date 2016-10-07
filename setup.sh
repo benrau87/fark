@@ -130,6 +130,8 @@ mkdir ~/forensic-grr-elk/dashboards/search
 mkdir ~/forensic-grr-elk/dashboards/visualization
 mkdir ~/forensic-grr-elk/dashboards/index-pattern
 
+cp ~/forensic-grr-elk/sof-elk/configfiles/* /etc/logstash/conf.d/
+
 dash=~/forensic-grr-elk/dashboards/dashboard/
 search=~/forensic-grr-elk/dashboards/search/
 vis=~/forensic-grr-elk/dashboards/visualization/
