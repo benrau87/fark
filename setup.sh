@@ -126,11 +126,11 @@ then
 mkdir ~/forensic-grr-elk/dashboards
 mkdir ~/forensic-grr-elk/dashboards/dashboard
 mkdir ~/forensic-grr-elk/dashboards/search
-mkdir ~/forensic-grr-elk/dashboards/visualzation
+mkdir ~/forensic-grr-elk/dashboards/visualization
 
-dash="~/forensic-grr-elk/dashboards/dashboard/"
-search="~/forensic-grr-elk/dashboards/search/"
-vis="~/forensic-grr-elk/dashboards/visualization/"
+dash=~/forensic-grr-elk/dashboards/dashboard/
+search=~/forensic-grr-elk/dashboards/search/
+vis=~/forensic-grr-elk/dashboards/visualization/
 
 chown $USER:$USER ~/forensic-grr-elk/dashboards
 cd ~/forensic-grr-elk/
