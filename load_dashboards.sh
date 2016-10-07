@@ -1,120 +1,47 @@
-#!/bin/bash
+ARGC=$#
+apt-get install jq
 
-ELASTICSEARCH=http://localhost:9200
-CURL=curl
-KIBANA_INDEX=".kibana"
+es_host=localhost
+es_port=9200
+kibana_index=.kibana
 
-print_usage() {
-  echo "
-  
-Load the dashboards, visualizations and index patterns into the given
-Elasticsearch instance.
+index_patterns="httpdlog netflow syslog"
 
-Usage:
-  $(basename "$0") -url $ELASTICSEARCH -user admin:secret -index $KIBANA_INDEX
+kibana_version=$( jq -r '.version' < /opt/kibana/package.json )
+kibana_build=$(jq -r '.build.number' < /opt/kibana/package.json )
 
-Options:
-  -h | -help
-    Print the help menu.
-  -l | -url
-    Elasticseacrh URL. By default is $ELASTICSEARCH.
-  -u | -user
-    Username and password for authenticating to Elasticsearch using Basic
-    Authentication. The username and password should be separated by a
-    colon (i.e. "admin:secret"). By default no username and password are
-    used.
-  -i | -index
-    Kibana index pattern where to save the dashboards, visualizations,
-    index patterns. By default is $KIBANA_INDEX.
-
-" >&2
-}
-
-while [ "$1" != "" ]; do
-case $1 in
-    -l | -url )
-        ELASTICSEARCH=$2
-        if [ "$ELASTICSEARCH" = "" ]; then
-            echo "Error: Missing Elasticsearch URL"
-            print_usage
-            exit 1
-        fi
-        ;;
-
-    -u | -user )
-        USER=$2
-        if [ "$USER" = "" ]; then
-            echo "Error: Missing username"
-            print_usage
-            exit 1
-        fi
-        CURL="$CURL --user $USER"
-        ;;
-
-    -i | -index )
-        KIBANA_INDEX=$2
-        if [ "$KIBANA_INDEX" = "" ]; then
-            echo "Error: Missing Kibana index pattern"
-            print_usage
-            exit 1
-        fi
-        ;;
-
-    -h | -help )
-        print_usage
-        exit 0
-        ;;
-
-     *)
-        echo "Error: Unknown option $2"
-        print_usage
-        exit 1
-        ;;
-
-esac
-shift 2
+dashboard_list="httpd introductory netflow syslog"
+dashboard_dir=~/forensic-grr-elk/sof-elk/dashboards/
+# enter a holding pattern until the elasticsearch server is available, but don't wait too long
+max_wait=60
+wait_step=0
+until curl -s -XGET http://${es_host}:${es_port}/_cluster/health > /dev/null ; do
+    wait_step=$(( ${wait_step} + 1 ))
+    if [ ${wait_step} -gt ${max_wait} ]; then
+        echo "ERROR: elasticsearch server not available for more than ${max_wait} seconds."
+        exit 5
+    fi
+    sleep 1;
 done
 
-DIR=~/forensic-grr-elk/dashboards
-echo "Loading dashboards to $ELASTICSEARCH in $KIBANA_INDEX"  
-
-# Workaround for: https://github.com/elastic/beats-dashboards/issues/94
-$CURL -XPUT "$ELASTICSEARCH/$KIBANA_INDEX"
-$CURL -XPUT "$ELASTICSEARCH/$KIBANA_INDEX/_mapping/search" -d'{"search": {"properties": {"hits": {"type": "integer"}, "version": {"type": "integer"}}}}'
-
-for file in $DIR/search/*.json
-do
-    name=`basename $file .json`
-    echo "Loading search $name:"
-    $CURL -XPUT $ELASTICSEARCH/$KIBANA_INDEX/search/$name \
-        -d @$file || exit 1
-    echo
+# create the index patterns from files
+for indexid in ${index_patterns}; do
+    curl -s -XDELETE http://${es_host}:${es_port}/${kibana_index}/index-pattern/${indexid}-* > /dev/null
+    curl -s -XPUT http://${es_host}:${es_port}/${kibana_index}/index-pattern/${indexid}-* -T ${dashboard_dir}/index-patterns/${indexid} > /dev/null
 done
 
-for file in $DIR/visualization/*.json
-do
-    name=`basename $file .json`
-    echo "Loading visualization $name:"
-    $CURL -XPUT $ELASTICSEARCH/$KIBANA_INDEX/visualization/$name \
-        -d @$file || exit 1
-    echo
-done
+# set the default index pattern, time zone, and add TZ offset to the default date format 
+curl -s -XPOST http://${es_host}:${es_port}/${kibana_index}/config/${kibana_version} -d "{\"buildNum\": ${kibana_build}, \"defaultIndex\": \"syslog-*\", \"dateFormat:tz\": \"Etc/UTC\", \"dateFormat\": \"MMMM Do YYYY, HH:mm:ss.SSS Z\"}" > /dev/null
 
-for file in $DIR/dashboard/*.json
-do
-    name=`basename $file .json`
-    echo "Loading dashboard $name:"
-    $CURL -XPUT $ELASTICSEARCH/$KIBANA_INDEX/dashboard/$name \
-        -d @$file || exit 1
-    echo
-done
+# create the dashboards, searches, and visualizations from files
+for dashboard in ${dashboard_list}; do
+    for type in ${dashboard_dir}${dashboard}/*; do
+        type=$( basename $type )
 
-for file in $DIR/index-pattern/*.json
-do
-    name=`awk '$1 == "\"title\":" {gsub(/"/, "", $2); print $2}' $file`
-    echo "Loading index pattern $name:"
-
-    $CURL -XPUT $ELASTICSEARCH/$KIBANA_INDEX/index-pattern/$name \
-        -d @$file || exit 1
-    echo
+        for object in ${dashboard_dir}${dashboard}/${type}/*; do
+            object=$( basename ${object} )
+            curl -s -XDELETE http://${es_host}:${es_port}/${kibana_index}/${type}/${object} > /dev/null
+            curl -s -XPUT http://${es_host}:${es_port}/${kibana_index}/${type}/${object} -T ${dashboard_dir}${dashboard}/${type}/${object} > /dev/null
+        done
+    done
 done
