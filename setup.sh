@@ -103,7 +103,7 @@ cd /etc/pki/tls; sudo openssl req -subj '/CN=GRR_Server/' -x509 -days 3650 -batc
 
 cp ~/forensic-grr-elk/02-beats-input.conf /etc/logstash/conf.d/
 
-cp ~/forensic-grr-elk/30-elasticsearch-output.conf /etc/logstash/conf.d/
+cp ~/forensic-grr-elk/999-elasticsearch-output.conf /etc/logstash/conf.d/
 
 service logstash start
 
