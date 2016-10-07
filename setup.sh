@@ -156,15 +156,18 @@ git clone https://github.com/philhagen/sof-elk.git
 
 ###Rename files with .json extension
 cd $dash
-for file in * do  
+for file in * 
+do  
   mv "$file" "${file%}.json"
 done
 cd $search
-for file in * do  
+for file in * 
+do  
   mv "$file" "${file%}.json"
 done
 cd $vis
-for file in * do  
+for file in * 
+do  
   mv "$file" "${file%}.json"
 done
 
