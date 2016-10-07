@@ -173,7 +173,7 @@ do
 done
 
 ###Add dashboards
-./~/forensic-grr-elk/load_dashboards.sh
+sudo bash ~/forensic-grr-elk/load_dashboards.sh
 
 fi
 
