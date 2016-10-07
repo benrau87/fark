@@ -151,8 +151,22 @@ git clone https://github.com/philhagen/sof-elk.git
       cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/visualization/* $vis
   
   cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/dashboard/* $dash
-   cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/search/* $search
+    cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/search/* $search
       cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/visualization/* $vis
+
+###Rename files with .json extension
+cd $dash
+for a in * do  
+  mv "$a" "${a%}.json"
+done
+cd $search
+for a in * do  
+  mv "$a" "${a%}.json"
+done
+cd $vis
+for a in * do  
+  mv "$a" "${a%}.json"
+done
 
 ###Configure packetbeat clients
 cp -r ~/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
