@@ -128,10 +128,12 @@ mkdir ~/forensic-grr-elk/dashboards
 mkdir ~/forensic-grr-elk/dashboards/dashboard
 mkdir ~/forensic-grr-elk/dashboards/search
 mkdir ~/forensic-grr-elk/dashboards/visualization
+mkdir ~/forensic-grr-elk/dashboards/index-pattern
 
 dash=~/forensic-grr-elk/dashboards/dashboard/
 search=~/forensic-grr-elk/dashboards/search/
 vis=~/forensic-grr-elk/dashboards/visualization/
+index=~/forensic-grr-elk/dashboards/index-pattern
 
 chown $USER:$USER ~/forensic-grr-elk/dashboards
 cd ~/forensic-grr-elk/
@@ -142,7 +144,7 @@ git clone https://github.com/philhagen/sof-elk.git
     cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/search/* $search
       cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/visualization/* $vis
       
-  cp ~/forensic-grr-elk/sof-elk/dashboards/index-patterns/* $dash
+  cp ~/forensic-grr-elk/sof-elk/dashboards/index-patterns/* $index
   
   cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/* $dash
     cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/* $vis
@@ -161,11 +163,19 @@ for file in *
 do  
   mv "$file" "${file%}.json"
 done
+
+cd $index
+for file in * 
+do  
+  mv "$file" "${file%}.json"
+done
+
 cd $search
 for file in * 
 do  
   mv "$file" "${file%}.json"
 done
+
 cd $vis
 for file in * 
 do  
