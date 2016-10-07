@@ -1,0 +1,3 @@
+Add option to download beats shippers.
+Create script to install shippers/certs on Nix
+Create .bat for installing shipper/certs on Windows
