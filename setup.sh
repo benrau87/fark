@@ -33,6 +33,7 @@ sleep 5
 echo "Installing GRR"
 echo
 
+cd ~/forensic-grr-elk/
 
 wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
 
