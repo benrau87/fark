@@ -234,14 +234,7 @@ then
 # https://n0where.net/malware-analysis-damm/
     git clone --quiet https://github.com/504ensicsLabs/DAMM 
     echo "Installed DAMM"
-
-#Volatility   
-    wget -q -O ~/Desktop/Tools/ \
-    http://downloads.volatilityfoundation.org/releases/2.5/volatility_2.5.linux.standalone.zip && \
-    unzip ~/Desktop/Tools/*.zip
-    echo "Dwonloaded Volatility"
      
-      
 # https://github.com/DidierStevens/DidierStevensSuite
     git clone --quiet https://github.com/DidierStevens/DidierStevensSuite.git 
     echo "Checked out DidierStevensSuite." 
@@ -258,6 +251,12 @@ then
     echo "Checked  out DShell."
     
     apt-get install yara -y -qq
+    
+    #Volatility   
+    wget -q \
+    http://downloads.volatilityfoundation.org/releases/2.5/volatility_2.5.linux.standalone.zip && \
+    unzip ~/Desktop/Tools/*.zip
+    echo "Dwonloaded Volatility"
 fi
 
 ####################################End test
