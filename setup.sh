@@ -156,16 +156,16 @@ git clone https://github.com/philhagen/sof-elk.git
 
 ###Rename files with .json extension
 cd $dash
-for a in * do  
-  mv "$a" "${a%}.json"
+for file in * do  
+  mv "$file" "${file%}.json"
 done
 cd $search
-for a in * do  
-  mv "$a" "${a%}.json"
+for file in * do  
+  mv "$file" "${file%}.json"
 done
 cd $vis
-for a in * do  
-  mv "$a" "${a%}.json"
+for file in * do  
+  mv "$file" "${file%}.json"
 done
 
 ###Configure packetbeat clients
