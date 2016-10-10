@@ -41,7 +41,7 @@ sleep 2
 
 sudo bash install_script_ubuntu.sh
 
-sleep 2
+
 ###Copy exe's to Desktop
 echo
 echo
@@ -50,7 +50,7 @@ echo
 echo
 
 mkdir /$HOME/Desktop/clientinstall.$HOSTNAME
-cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
+
 
 sleep 2
 
@@ -124,6 +124,7 @@ read -p "Do you want to install Packetbeat shipper? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
   bash ~/forensic-grr-elk/beats_download.sh
+  cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
 fi
 
 ###SOF-ELK setup
