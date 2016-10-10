@@ -255,7 +255,7 @@ then
     echo "Checked out oletools."
     
     git clone --quiet https://github.com/USArmyResearchLab/Dshell.git
-    echo "Checked  out DShell."
+    echo "Checked out DShell."
     
     apt-get install yara -y -qq
     
