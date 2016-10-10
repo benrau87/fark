@@ -1,3 +1,13 @@
 Add option to download beats shippers.
 Create script to install shippers/certs on Nix
-Create .bat for installing shipper/certs on Windows
+Create .msi for installing shipper/certs on Windows
+
+Demo
+  Install script on Ubuntu Server (MATE)
+  GRR and Packetbeat client install on nix, 2012, Windows 7 clients
+  File Browser
+  Live memory grab on windows and nix
+  Live memory discovery using Rekall plugins from http://www.rekall-forensic.com/docs/Manual/Plugins/
+    arp, pslist, netstat, vmscan
+  Install C2 malware on Win 7 client, create hunt and search the rest of the clients using signatures
+  
