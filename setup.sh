@@ -103,14 +103,14 @@ cd /etc/pki/tls; sudo openssl req -subj '/CN=GRR_Server/' -x509 -days 3650 -batc
 
 ###Setup Beats for Logstash input to Elastisearch output
 
-cp $dir/forensic-grr-elk/logstash_config/default/001-beats-input.conf /etc/logstash/conf.d/
+cp $dir/logstash_config/default/001-beats-input.conf /etc/logstash/conf.d/
 
-cp $dir/forensic-grr-elk/logstash_config/default/999-elasticsearch-output.conf /etc/logstash/conf.d/
+cp $dir/logstash_config/default/999-elasticsearch-output.conf /etc/logstash/conf.d/
 
 service logstash start
 
 ###Install netflow dashboards for Kibana
-cd  ~/forensic-grr-elk/
+cd  $dir
 curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
 
 apt-get -qq install unzip -y
@@ -126,9 +126,9 @@ read -p "Do you want to install Packetbeat shipper? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
   ###Configure packetbeat clients
-  cp -r $dir/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+  cp -r $dir/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
   cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
-  bash $dir/forensic-grr-elk/supporting_scripts/beats_download.sh
+  bash $dir/supporting_scripts/beats_download.sh
   cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
 fi
 
