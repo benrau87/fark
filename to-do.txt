@@ -1,6 +1,7 @@
 Add option to download beats shippers.
 Create script to install shippers/certs on Nix
 Create .msi for installing shipper/certs on Windows
+Add folders to place log files for parsing by logstash
 
 Demo
   Install script on Ubuntu Server (MATE)
