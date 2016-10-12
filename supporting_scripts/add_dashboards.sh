@@ -1,6 +1,35 @@
 #!/bin/bash
 
 ###Script tp add custom downloaded dasboards. All files need to be added to the appropriate folder within ~/forensic-grr-elk/dashboards
+###Cleanup and add .json file extension if needed
+dash=~/forensic-grr-elk/dashboards/dashboard/
+search=~/forensic-grr-elk/dashboards/search/
+vis=~/forensic-grr-elk/dashboards/visualization/
+index=~/forensic-grr-elk/dashboards/index-pattern/
+
+cd $dash
+for file in * 
+do  
+  mv "$file" "${file%}.json"
+done
+
+cd $index
+for file in * 
+do  
+  mv "$file" "${file%}.json"
+done
+
+cd $search
+for file in * 
+do  
+  mv "$file" "${file%}.json"
+done
+
+cd $vis
+for file in * 
+do  
+  mv "$file" "${file%}.json"
+done
 
 # Usage examples:
 # env KIBANA_INDEX='.kibana_env1' ./load.sh
@@ -81,14 +110,13 @@ esac
 shift 2
 done
 
-DIR=~/forensic-grr-elk/dashboards/
 echo "Loading dashboards to $ELASTICSEARCH in $KIBANA_INDEX"  
 
 # Workaround for: https://github.com/elastic/beats-dashboards/issues/94
 $CURL -XPUT "$ELASTICSEARCH/$KIBANA_INDEX"
 $CURL -XPUT "$ELASTICSEARCH/$KIBANA_INDEX/_mapping/search" -d'{"search": {"properties": {"hits": {"type": "integer"}, "version": {"type": "integer"}}}}'
 
-for file in $DIR/search/*.json
+for file in $search/*.json
 do
     name=`basename $file .json`
     echo "Loading search $name:"
@@ -97,7 +125,7 @@ do
     echo
 done
 
-for file in $DIR/visualization/*.json
+for file in $vis/*.json
 do
     name=`basename $file .json`
     echo "Loading visualization $name:"
@@ -106,7 +134,7 @@ do
     echo
 done
 
-for file in $DIR/dashboard/*.json
+for file in $dash/*.json
 do
     name=`basename $file .json`
     echo "Loading dashboard $name:"
@@ -115,7 +143,7 @@ do
     echo
 done
 
-for file in $DIR/index/*.json
+for file in $index/*.json
 do
     name=`awk '$1 == "\"title\":" {gsub(/"/, "", $2); print $2}' $file`
     echo "Loading index pattern $name:"
