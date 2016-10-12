@@ -13,5 +13,5 @@ mkdir /usr/local/sof-elk/grok-patterns/
 
 cp ~/forensic-grr-elk/grok-patterns/* /usr/local/sof-elk/grok-patterns/
 cp ~/forensic-grr-elk/lib/* usr/local/sof-elk/lib/
-cp ~/forensic-grr-elk/logstash_config/* /etc/logstash/conf.d/
+cp ~/forensic-grr-elk/logstash_conf/* /etc/logstash/conf.d/
 
