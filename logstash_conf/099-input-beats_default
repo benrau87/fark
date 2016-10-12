@@ -1,3 +1,4 @@
+#All other inputs from beats shippers
 input {
   beats {
     port => 5044
