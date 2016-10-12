@@ -122,7 +122,7 @@ unzip beats-dashboards-*.zip
 cd beats-dashboards-*
 ./load.sh
 
-read -p "Do you want to install Packetbeat shipper? Y/N" -n 1 -r
+read -p "Do you want to download Beats shippers? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
   ###Configure packetbeat clients
