@@ -27,7 +27,7 @@ sleep 5
 echo "Updating APT and installing dependencies"
 apt-get -qq update 
 
-apt-get -y -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark
+apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark -y
 sleep 5
 
 ####GRR Install
@@ -59,7 +59,7 @@ sleep 2
 ###Install ELK Stack
 echo "Installing ELK Stack"
 echo "Installing Dependencies"
-apt-get -qq -y install oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash
+apt-get -qq install oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash -y
 
 ###Elastisearch
 echo "Installing Elasticsearch"
@@ -113,7 +113,7 @@ service logstash start
 cd  ~/forensic-grr-elk/
 curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
 
-apt-get -y install unzip
+apt-get -qq install unzip -y
 
 sleep 2
 
@@ -183,7 +183,7 @@ then
     git clone --quiet https://github.com/USArmyResearchLab/Dshell.git
     echo "Checked out DShell."
     
-    apt-get install yara -y -qq
+    apt-get -qq install yara -y
     
     #Volatility   
     git clone --quiet https://github.com/volatilityfoundation/volatility.git
