@@ -89,7 +89,7 @@ htpasswd -c /etc/nginx/htpasswd.users $kibanauser
 mv /etc/nginx/sites-available/default /etc/nginx/
 
 
-cp /$PWD/default /etc/nginx/sites-available/
+cp $dir/lib/default /etc/nginx/sites-available/
 
 service nginx restart
 
