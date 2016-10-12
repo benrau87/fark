@@ -7,6 +7,8 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
+$PWD=dir
+
 echo "Adding Repos"
 echo
 echo
@@ -33,7 +35,7 @@ sleep 5
 echo "Installing GRR"
 echo
 
-cd ~/forensic-grr-elk/
+cd $dir
 
 wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
 
