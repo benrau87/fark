@@ -183,6 +183,9 @@ then
     git clone --quiet https://github.com/USArmyResearchLab/Dshell.git
     echo "Checked out DShell."
     
+     git clone --quie https://github.com/BinaryDefense/goatrider.git
+    echo "Checked out GoatRider."
+    
     apt-get -qq install yara -y
     
     #Volatility   
