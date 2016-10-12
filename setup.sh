@@ -103,9 +103,9 @@ cd /etc/pki/tls; sudo openssl req -subj '/CN=GRR_Server/' -x509 -days 3650 -batc
 
 ###Setup Beats for Logstash input to Elastisearch output
 
-cp ~/forensic-grr-elk/02-beats-input.conf /etc/logstash/conf.d/
+cp $dir/forensic-grr-elk/logstash_config/default/001-beats-input.conf /etc/logstash/conf.d/
 
-cp ~/forensic-grr-elk/999-elasticsearch-output.conf /etc/logstash/conf.d/
+cp $dir/forensic-grr-elk/logstash_config/default/999-elasticsearch-output.conf /etc/logstash/conf.d/
 
 service logstash start
 
@@ -125,7 +125,7 @@ cd beats-dashboards-*
 read -p "Do you want to install Packetbeat shipper? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
-  bash ~/forensic-grr-elk/beats_download.sh
+  bash $dir/forensic-grr-elk/supporting_scripts/beats_download.sh
   cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
 fi
 
