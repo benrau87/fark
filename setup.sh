@@ -125,6 +125,9 @@ cd beats-dashboards-*
 read -p "Do you want to install Packetbeat shipper? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
+  ###Configure packetbeat clients
+  cp -r $dir/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+  cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
   bash $dir/forensic-grr-elk/supporting_scripts/beats_download.sh
   cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
 fi
@@ -133,89 +136,11 @@ fi
 read -p "Do you want to install SOF-ELK dashboards and configurations? Y/N" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-mkdir ~/forensic-grr-elk/dashboards
-mkdir ~/forensic-grr-elk/dashboards/dashboard
-mkdir ~/forensic-grr-elk/dashboards/search
-mkdir ~/forensic-grr-elk/dashboards/visualization
-mkdir ~/forensic-grr-elk/dashboards/index-pattern
-
-cd ~/forensic-grr-elk/
-git clone https://github.com/philhagen/sof-elk.git
-
-cp ~/forensic-grr-elk/sof-elk/configfiles/* /etc/logstash/conf.d/
-
-dash=~/forensic-grr-elk/dashboards/dashboard/
-search=~/forensic-grr-elk/dashboards/search/
-vis=~/forensic-grr-elk/dashboards/visualization/
-index=~/forensic-grr-elk/dashboards/index-pattern
-
-chown $USER:$USER ~/forensic-grr-elk/dashboards
-cd ~/forensic-grr-elk/
-
-#Remove SANS banner
-
-rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SANS*
-rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SOF*
-rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/*
-
-###Copy dashboards for later
-
-cp ~/forensic-grr-elk/optiv_dash_vis ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/
-
-cp ~/forensic-grr-elk/optiv_image ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/
-
-cp ~/forensic-grr-elk/optiv_intro_dash ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/
-
-  cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/dashboard/* $dash
-    cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/search/* $search
-      cp ~/forensic-grr-elk/sof-elk/dashboards/httpd/visualization/* $vis
-      
-  cp ~/forensic-grr-elk/sof-elk/dashboards/index-patterns/* $index
-  
-  cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/* $dash
-    cp ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/* $vis
-  
-  cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/dashboard/* $dash
-    cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/search/* $search
-      cp ~/forensic-grr-elk/sof-elk/dashboards/netflow/visualization/* $vis
-  
-  cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/dashboard/* $dash
-    cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/search/* $search
-      cp ~/forensic-grr-elk/sof-elk/dashboards/syslog/visualization/* $vis
-
-###Rename files with .json extension
-cd $dash
-for file in * 
-do  
-  mv "$file" "${file%}.json"
-done
-
-cd $index
-for file in * 
-do  
-  mv "$file" "${file%}.json"
-done
-
-cd $search
-for file in * 
-do  
-  mv "$file" "${file%}.json"
-done
-
-cd $vis
-for file in * 
-do  
-  mv "$file" "${file%}.json"
-done
-
-###Add dashboards
-sudo bash ~/forensic-grr-elk/load_dashboards.sh
+bash $dir/supporting_scripts/sof-elk_setup.sh
+bash $dir/supporting_scripts/add_dashboards.sh
 
 fi
 
-###Configure packetbeat clients
-cp -r ~/forensic-grr-elk/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/packetbeat/
 
 
 ##################################Test
