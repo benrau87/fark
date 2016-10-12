@@ -1,6 +1,7 @@
 #!/bin/bash
 ###Use this script to download Beats shippers if needed. Then you can copy over the configured ymls that were created during installation.
 cd $HOME/Desktop/clientinstall*
+mkdir packetbeat
 cd packetbeat/
 
 wget https://download.elastic.co/beats/packetbeat/packetbeat_1.3.1_i386.deb
