@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
-$PWD=dir
+dir=$PWD
 
 echo "Adding Repos"
 echo
