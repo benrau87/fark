@@ -115,7 +115,7 @@ do
     echo
 done
 
-for file in $DIR/index-pattern/*.json
+for file in $DIR/index/*.json
 do
     name=`awk '$1 == "\"title\":" {gsub(/"/, "", $2); print $2}' $file`
     echo "Loading index pattern $name:"
