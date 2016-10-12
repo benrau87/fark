@@ -137,6 +137,9 @@ mkdir ~/forensic-grr-elk/dashboards/search
 mkdir ~/forensic-grr-elk/dashboards/visualization
 mkdir ~/forensic-grr-elk/dashboards/index-pattern
 
+cd ~/forensic-grr-elk/
+git clone https://github.com/philhagen/sof-elk.git
+
 cp ~/forensic-grr-elk/sof-elk/configfiles/* /etc/logstash/conf.d/
 
 dash=~/forensic-grr-elk/dashboards/dashboard/
@@ -147,15 +150,11 @@ index=~/forensic-grr-elk/dashboards/index-pattern
 chown $USER:$USER ~/forensic-grr-elk/dashboards
 cd ~/forensic-grr-elk/
 
-git clone https://github.com/philhagen/sof-elk.git
-
 #Remove SANS banner
 
 rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SANS*
 rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/visualization/SOF*
 rm ~/forensic-grr-elk/sof-elk/dashboards/introductory/dashboard/*
-
-cp ~/forensic-grr-elk/
 
 ###Copy dashboards for later
 
