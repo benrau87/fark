@@ -103,9 +103,9 @@ cd /etc/pki/tls; sudo openssl req -subj '/CN=GRR_Server/' -x509 -days 3650 -batc
 
 ###Setup Beats for Logstash input to Elastisearch output
 
-cp $dir/logstash_config/default/001-beats-input.conf /etc/logstash/conf.d/
+cp $dir/logstash_conf/default/001-beats-input.conf /etc/logstash/conf.d/
 
-cp $dir/logstash_config/default/999-elasticsearch-output.conf /etc/logstash/conf.d/
+cp $dir/logstash_conf/default/999-elasticsearch-output.conf /etc/logstash/conf.d/
 
 service logstash start
 
