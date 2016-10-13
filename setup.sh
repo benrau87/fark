@@ -30,6 +30,9 @@ apt-get -qq update
 apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark -y
 sleep 5
 
+ cp $dir/lib/*.desktop ~/Desktop/
+ chmod 755 ~/Desktop/*.desktop
+ 
 ####GRR Install
 
 echo "Installing GRR"
