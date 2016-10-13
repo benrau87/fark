@@ -6,6 +6,9 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
+echo
+echo "Restarting ELK stack...Please wait"
+echo
 #Use to restart the ELK stack services if needed
 service elasticsearch restart
 service logstash restart
