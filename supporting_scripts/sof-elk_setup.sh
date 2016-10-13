@@ -9,8 +9,8 @@ mkdir /usr/local/logstash-httpd
 mkdir /var/db
 mkdir /var/db/logstash
 mkdir /var/db/logstash/sincedb
-mkdir/ usr/local/sof-elk
-mkdir/ usr/local/sof-elk/lib
+mkdir /usr/local/sof-elk
+mkdir /usr/local/sof-elk/lib
 mkdir /usr/local/sof-elk/grok-patterns
 
 cp ~/forensic-grr-elk/grok-patterns/* /usr/local/sof-elk/grok-patterns/
