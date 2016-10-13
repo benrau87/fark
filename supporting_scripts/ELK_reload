@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Use to restart the ELK stack services if needed
+service elasticsearch restart
+service logstash restart
+service kibana restart
+service nginx restart
