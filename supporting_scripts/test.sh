@@ -12,7 +12,7 @@ kibana_version=$( jq -r '.version' < /opt/kibana/package.json )
 kibana_build=$(jq -r '.build.number' < /opt/kibana/package.json )
 
 dashboard_list="httpd introductory netflow syslog"
-dashboard_dir="/usr/local/sof-elk/dashboards/"
+dashboard_dir="/usr/local/sof-elk/sof_dashboards/"
 
 # enter a holding pattern until the elasticsearch server is available, but don't wait too long
 max_wait=60
