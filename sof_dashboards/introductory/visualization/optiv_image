@@ -1,6 +1,6 @@
 {
   "title": "Optiv",
-  "visState": "{\"title\":\"Optiv Logo\",\"type\":\"html\",\"params\":{\"html\":\"<img src=" alt=\\\"Optiv Logo\\\" style=\\\"width:100%; height:auto;\\\">\"},\"aggs\":[],\"listeners\":{}}",
+  "visState": "{\"title\":\"Optiv Logo\",\"type\":\"html\",\"params\":{\"html\":\"<img src=file:///usr/local/sof-elk/optiv_logo.png" alt=\\\"Optiv Logo\\\" style=\\\"width:100%; height:auto;\\\">\"},\"aggs\":[],\"listeners\":{}}",
   "uiStateJSON": "{}",
   "description": "",
   "version": 1,
