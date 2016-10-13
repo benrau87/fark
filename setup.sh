@@ -137,6 +137,7 @@ read -p "Do you want to install SOF-ELK dashboards and configurations? Y/N" -n 1
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 bash $dir/supporting_scripts/sof-elk_setup.sh
+#sof-elk_setup must be ran BEFORE add_dashboards or directories will not be created
 bash $dir/supporting_scripts/add_dashboards.sh
 
 fi
