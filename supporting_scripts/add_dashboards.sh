@@ -2,10 +2,10 @@
 
 ###Script tp add custom downloaded dasboards. All files need to be added to the appropriate folder within ~/forensic-grr-elk/dashboards
 ###Cleanup and add .json file extension if needed
-dash=~/forensic-grr-elk/dashboards/dashboards
-search=~/forensic-grr-elk/dashboards/search
-vis=~/forensic-grr-elk/dashboards/visualizations
-index=~/forensic-grr-elk/dashboards/index
+dash=/usr/local/sof-elk/dashboards
+search=/usr/local/sof-elk/search
+vis=/usr/local/sof-elk/visualizations
+index=/usr/local/sof-elk/index
 
 cd $dash
 for file in * 
