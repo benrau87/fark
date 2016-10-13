@@ -17,8 +17,6 @@ pip install timesketch
 touch /etc/timesketch.conf
 chmod 600 /etc/timesketch.conf
 
-openssl rand -base64 32 
-
 echo
 echo "What would you like your SQL username to be?"
 read name
@@ -34,3 +32,5 @@ echo "SQLALCHEMY_DATABASE_URI = u'postgresql://$name:$pass@localhost/timesketch'
 tsctl add_user -u $name
 
 tsctl runserver -h 0.0.0.0 -p 5000
+
+echo "Please copy this key into /etc/timesketch.conf file under the SECRET_KEY option"
