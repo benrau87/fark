@@ -1,7 +1,8 @@
 # forensic-grr-elk
 Repo for work on setting up a centralized server for incident response.
 git clone to ~ and chmod +x setup.sh
-Following on-screen questions
+
+Follow the on-screen setup questions
 
 Comprised of GRR and ELK stack with packetbeat clients.
 GRR installs with clients that are configured based of the server hostname that the script is ran on.
