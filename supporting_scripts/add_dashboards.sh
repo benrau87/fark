@@ -145,9 +145,10 @@ done
 
 for file in $index/*.json
 do
-    name=`awk '$1 == "\"title\":" {gsub(/"/, "", $2); print $2}' $file`
+    #Below didn't work, stuck with simple change
+    #name=`awk '$1 == "\"title\":" {gsub(/"/, "", $2); print $2}' $file`
+    name=`basename $file .json`
     echo "Loading index pattern $name:"
-
     $CURL -XPUT $ELASTICSEARCH/$KIBANA_INDEX/index-pattern/$name \
         -d @$file || exit 1
     echo
