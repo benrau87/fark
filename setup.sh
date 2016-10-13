@@ -203,7 +203,8 @@ then
     cd volatility
     python setup.py install
 fi
-
+cp $dir/lib/*.desktop ~/Desktop/
+chmod 755 ~/Desktop/*.desktop
 ####################################End test
 echo
 echo
