@@ -121,8 +121,9 @@ unzip beats-dashboards-*.zip
 
 cd beats-dashboards-*
 ./load.sh
-
+echo
 read -p "Do you want to download Beats shippers? Y/N" -n 1 -r
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
   ###Configure packetbeat clients
@@ -133,7 +134,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 fi
 
 ###SOF-ELK setup
+echo
 read -p "Do you want to install SOF-ELK dashboards and configurations? Y/N" -n 1 -r
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 bash $dir/supporting_scripts/sof-elk_setup.sh
@@ -146,7 +149,9 @@ fi
 
 ##################################Test
 ###Forensic tools install
+echo
 read -p "Do you want to install forensic tools? Y/N" -n 1 -r
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo ""
