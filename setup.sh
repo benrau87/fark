@@ -8,7 +8,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #Wait for dpkg process to finish
-
+echo "Waiting for dpkg process to free up..."
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
    sleep 1
 done
