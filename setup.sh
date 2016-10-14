@@ -133,7 +133,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
   cp -r $dir/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
   cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
   bash $dir/supporting_scripts/beats_download.sh
-  cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
 fi
 
 ###SOF-ELK setup
@@ -203,6 +202,7 @@ then
     cd volatility
     python setup.py install
 fi
+cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
 cp $dir/lib/*.desktop ~/Desktop/
 chmod 755 ~/Desktop/*.desktop
 ####################################End test
