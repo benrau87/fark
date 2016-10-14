@@ -28,7 +28,8 @@ echo "Updating APT and installing dependencies"
 apt-get -qq update 
 
 apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark -y
-sleep 5
+#Wait for dpkg process to finish
+sleep 15
 
 ####GRR Install
 
