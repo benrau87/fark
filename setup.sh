@@ -24,6 +24,7 @@ echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
 
 echo "Updating APT and installing dependencies"
+echo
 #Wait for dpkg process to finish
 echo "Waiting for dpkg process to free up..."
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
@@ -31,16 +32,15 @@ while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
 done
 apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark -y
 
+####GRR Install
+
+echo "Installing GRR"
+echo
 #Wait for dpkg process to finish
 echo "Waiting for dpkg process to free up..."
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
    sleep 1
 done
-####GRR Install
-
-echo "Installing GRR"
-echo
-
 cd $dir
 
 wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
