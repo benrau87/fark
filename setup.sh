@@ -30,11 +30,8 @@ echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -
 
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
 
-
 echo "Updating APT and installing dependencies"
-apt-get -qq update 
-
-apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark -y
+apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark -y
 
 ####GRR Install
 
