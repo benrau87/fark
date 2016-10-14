@@ -22,16 +22,14 @@ echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sud
 echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
 
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
-#Wait for dpkg process to finish
-sleep 15
+
 
 echo "Updating APT and installing dependencies"
 apt-get -qq update 
-#Wait for dpkg process to finish
-sleep 15
+
 apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark -y
 #Wait for dpkg process to finish
-sleep 15
+sleep 5
 
 ####GRR Install
 
