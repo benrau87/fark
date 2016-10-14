@@ -7,6 +7,13 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
+#Wait for dpkg process to finish
+
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+   sleep 1
+done
+
+
 dir=$PWD
 
 echo "Adding Repos"
@@ -28,8 +35,6 @@ echo "Updating APT and installing dependencies"
 apt-get -qq update 
 
 apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv tshark -y
-#Wait for dpkg process to finish
-sleep 5
 
 ####GRR Install
 
