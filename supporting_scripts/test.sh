@@ -4,7 +4,7 @@ ARGC=$#
 echo
 echo "Installing custom Kibana dashboards"
 echo
-apt-get -qq install jq -y
+
 es_host=localhost
 es_port=9200
 kibana_index=.kibana
