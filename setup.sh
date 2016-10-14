@@ -7,13 +7,6 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
-#Wait for dpkg process to finish
-echo "Waiting for dpkg process to free up..."
-while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
-   sleep 1
-done
-
-
 dir=$PWD
 
 echo "Adding Repos"
@@ -31,8 +24,18 @@ echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
 
 echo "Updating APT and installing dependencies"
+#Wait for dpkg process to finish
+echo "Waiting for dpkg process to free up..."
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+   sleep 1
+done
 apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark -y
 
+#Wait for dpkg process to finish
+echo "Waiting for dpkg process to free up..."
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+   sleep 1
+done
 ####GRR Install
 
 echo "Installing GRR"
