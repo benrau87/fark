@@ -76,7 +76,7 @@ echo "server.host: 127.0.0.1" | tee -a /opt/kibana/config/kibana.yml
 
 update-rc.d kibana defaults 96 9
 service kibana start
-systemctl enable elasticsearch.service
+systemctl enable kibana.service
 
 sleep 2
 
