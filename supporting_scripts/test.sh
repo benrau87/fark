@@ -31,7 +31,6 @@ done
 
 # create the index patterns from files
 for indexid in ${index_patterns}; do
-    curl -s -XDELETE http://${es_host}:${es_port}/${kibana_index}/index-pattern/${indexid}-* > /dev/null
     curl -s -XPUT http://${es_host}:${es_port}/${kibana_index}/index-pattern/${indexid}-* -T ${dashboard_dir}/index-patterns/${indexid} > /dev/null
 done
 
@@ -45,7 +44,6 @@ for dashboard in ${dashboard_list}; do
 
         for object in ${dashboard_dir}${dashboard}/${type}/*; do
             object=$( basename ${object} )
-            curl -s -XDELETE http://${es_host}:${es_port}/${kibana_index}/${type}/${object} > /dev/null
             curl -s -XPUT http://${es_host}:${es_port}/${kibana_index}/${type}/${object} -T ${dashboard_dir}${dashboard}/${type}/${object} > /dev/null
         done
     done
