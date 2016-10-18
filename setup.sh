@@ -145,7 +145,6 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 bash $dir/supporting_scripts/sof-elk_setup.sh
-#sof-elk_setup must be ran BEFORE add_dashboards or directories will not be created
 bash $dir/supporting_scripts/test.sh
 bash $dir/supporting_scripts/ELK_reload.sh
 fi
