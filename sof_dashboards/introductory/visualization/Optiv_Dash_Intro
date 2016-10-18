@@ -1,6 +1,6 @@
 {
-  "title": "Optiv Introduction",
-  "visState": "{\"title\":\"Optiv Introduction\",\"type\":\"markdown\",\"params\":{\"markdown\":\"## Welcome to the Optiv SOF-ELK distribution\\n\\nThis distro was created with a fully functional ELK configuration.  This server will ingest various log formats, and includes several dashboards to present the data in useful formats. It is maintained as community resource by Optiv\\n\\nSee the blocks at the bottom of this page to learn more about which types of data the VM is preconfigured to ingest and how to feed it.\\n\\nYou probably want to see the dashboards, though - here are the three pre-built for the VM:\\n\\n[Syslog Dashboard](#/dashboard/Syslog-Dashboard) | [NetFlow Dashboard](#/dashboard/NetFlow-Dashboard) | [HTTPD Log Dashboard](#/dashboard/HTTPD-Log-Dashboard)\"},\"aggs\":[],\"listeners\":{}}",
+  "title": "Optiv IR Intro",
+  "visState": "{\"title\":\"SOF-ELK VM Intro\",\"type\":\"markdown\",\"params\":{\"markdown\":\"## Welcome to the Optiv SOF-ELK distribution\\n\\nThis distro was created with a fully functional ELK configuration.  This server will ingest various log formats, and includes several dashboards to present the data in useful formats. It is maintained as community resource by Optiv.\\n\\nSee the blocks at the bottom of this page to learn more about which types of data the VM is preconfigured to ingest and how to feed it.\\n\\nYou probably want to see the dashboards, though - here are the three we've pre-built for the VM:\\n\\n[Syslog Dashboard](#/dashboard/Syslog-Dashboard) | [NetFlow Dashboard](#/dashboard/NetFlow-Dashboard) | [HTTPD Log Dashboard](#/dashboard/HTTPD-Log-Dashboard)\"},\"aggs\":[],\"listeners\":{}}",
   "uiStateJSON": "{}",
   "description": "",
   "version": 1,
