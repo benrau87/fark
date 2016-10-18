@@ -166,10 +166,7 @@ then
     
     mkdir ~/Desktop/Cases 
     mkdir ~/Desktop/Tools
-    chown $USER:$USER ~/Desktop/Cases/
-    chown $USER:$USER ~/Desktop/Tools/
-
- 
+  
 # Add scripts from different sources
     cd ~/Desktop/Tools/
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
@@ -212,6 +209,7 @@ cp -r /usr/share/grr-server/executables/installers/ $HOME/Desktop/clientinstall.
 mv $HOME/Desktop/clientinstall.$HOSTNAME/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/GRR_installers
 cp $dir/lib/*.desktop ~/Desktop/
 chmod 755 ~/Desktop/*.desktop
+chown $USER:$USER $HOME/Desktop/*
 ####################################End test
 echo
 echo
