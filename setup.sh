@@ -134,6 +134,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]
   then
   ###Configure packetbeat clients
   cp -r $dir/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+  cp -r $dir/filebeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+  cp -r $dir/metricbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+  cp -r $dir/topbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+  cp -r $dir/winlogbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
   cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
   bash $dir/supporting_scripts/beats_download.sh
 fi
@@ -205,6 +209,7 @@ then
     python setup.py install
 fi
 cp -r /usr/share/grr-server/executables/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/
+mv $HOME/Desktop/clientinstall.$HOSTNAME/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/GRR_installers
 cp $dir/lib/*.desktop ~/Desktop/
 chmod 755 ~/Desktop/*.desktop
 ####################################End test
