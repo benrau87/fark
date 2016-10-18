@@ -139,7 +139,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
   cp -r $dir/topbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
   cp -r $dir/winlogbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
   cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
-  bash $dir/supporting_scripts/beats_download.sh
+###  bash $dir/supporting_scripts/beats_download.sh
 fi
 
 ###SOF-ELK setup
