@@ -204,7 +204,7 @@ then
     cd volatility
     python setup.py install
 fi
-cp -r /usr/share/grr-server/executables/installers /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r /usr/share/grr-server/executables/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/
 cp $dir/lib/*.desktop ~/Desktop/
 chmod 755 ~/Desktop/*.desktop
 ####################################End test
