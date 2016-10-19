@@ -22,14 +22,14 @@ echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sud
 echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
 
 echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee -a /etc/apt/sources.list.d/logstash-2.2.x.list
-
-echo "Updating APT and installing dependencies"
 #Wait for dpkg process to finish
 echo "Waiting for dpkg process to free up..."
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
    sleep 1
 done
 echo
+echo "Updating APT and installing dependencies"
+
 apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash -y
 
 
