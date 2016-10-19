@@ -45,10 +45,7 @@ cd $dir
 
 wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
 
-sleep 2
-
 sudo bash install_script_ubuntu.sh
-
 
 ###Copy exe's to Desktop
 echo
