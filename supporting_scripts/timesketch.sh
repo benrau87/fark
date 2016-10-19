@@ -33,9 +33,11 @@ output=$( cat ~/Desktop/out )
 echo "SECRET_KEY = u'$output'" | tee -a /etc/timesketch.conf
 echo "ELASTIC_HOST = u'127.0.0.1'" | tee -a /etc/timesketch.conf
 echo "ELASTIC_PORT = 9200" | tee -a /etc/timesketch.conf
+rm ~/Desktop/out
+chmod 600 /etc/timesketch.conf
 
 tsctl add_user -u $name
 
 tsctl runserver -h 0.0.0.0 -p 5000
 
-echo "Please copy this key into /etc/timesketch.conf file under the SECRET_KEY option"
+
