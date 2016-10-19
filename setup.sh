@@ -32,32 +32,6 @@ done
 echo
 apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark -y
 
-####GRR Install
-
-echo "Installing GRR"
-echo
-#Wait for dpkg process to finish
-echo "Waiting for dpkg process to free up..."
-while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
-   sleep 1
-done
-cd $dir
-
-wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
-
-sudo bash install_script_ubuntu.sh
-
-###Copy exe's to Desktop
-echo
-echo
-echo "Creating directory for GRR installers"
-echo 
-echo
-
-mkdir /$HOME/Desktop/clientinstall.$HOSTNAME
-
-
-sleep 2
 
 ###Install ELK Stack
 echo "Installing ELK Stack"
@@ -125,6 +99,34 @@ unzip beats-dashboards-*.zip
 cd beats-dashboards-*
 ./load.sh
 echo
+
+####GRR Install
+
+echo "Installing GRR"
+echo
+#Wait for dpkg process to finish
+echo "Waiting for dpkg process to free up..."
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+   sleep 1
+done
+cd $dir
+
+wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
+
+sudo bash install_script_ubuntu.sh
+
+###Copy exe's to Desktop
+echo
+echo
+echo "Creating directory for GRR installers"
+echo 
+echo
+
+mkdir /$HOME/Desktop/clientinstall.$HOSTNAME
+
+
+sleep 2
+
 read -p "Do you want to download Beats shippers? Y/N" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -149,8 +151,6 @@ bash $dir/supporting_scripts/sof-elk_setup.sh
 bash $dir/supporting_scripts/test.sh
 bash $dir/supporting_scripts/ELK_reload.sh
 fi
-
-
 
 ##################################Test
 ###Forensic tools install
