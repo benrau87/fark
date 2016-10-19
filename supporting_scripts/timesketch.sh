@@ -14,8 +14,7 @@ apt-get -qq install python-pip python-dev libffi-dev -y
 
 pip install timesketch
 
-cp /usr/local/share/timesketch/timesketch.conf /etc/
-chmod 600 /etc/timesketch.conf
+touch /etc/timesketch.conf
 
 echo
 echo "What would you like your SQL username to be?"
@@ -28,6 +27,12 @@ echo "Please retype the same password you just created"
 read pass
 echo
 echo "SQLALCHEMY_DATABASE_URI = u'postgresql://$name:$pass@localhost/timesketch'" | tee -a /etc/timesketch.conf
+
+openssl rand -base64 32 > ~/Desktop/out
+output=$( cat ~/Desktop/out )
+echo "SECRET_KEY = u'$output'" | tee -a /etc/timesketch.conf
+echo "ELASTIC_HOST = u'127.0.0.1'" | tee -a /etc/timesketch.conf
+echo "ELASTIC_PORT = 9200" | tee -a /etc/timesketch.conf
 
 tsctl add_user -u $name
 
