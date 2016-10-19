@@ -14,7 +14,7 @@ apt-get -qq install python-pip python-dev libffi-dev -y
 
 pip install timesketch
 
-touch /etc/timesketch.conf
+cp /usr/local/share/timesketch/timesketch.conf /etc/
 chmod 600 /etc/timesketch.conf
 
 echo
