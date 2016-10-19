@@ -4,7 +4,6 @@
 echo
 echo "Installing PostgreSQL"
 apt-get -qq install postgresql python-psycopg2 -y
-apt-get -qq install openjdk-7-jre-headless -y
 
 echo "local   all             timesketch                              md5" | tee -a /etc/postgresql/9.*/main/pg_hba.conf
 service postgresql restart
