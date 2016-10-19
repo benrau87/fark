@@ -107,8 +107,7 @@ echo "Waiting for dpkg process to free up..."
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
    sleep 1
 done
-cd $dir
-
+cd ~
 wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
 
 sudo bash install_script_ubuntu.sh
