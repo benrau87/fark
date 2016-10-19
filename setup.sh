@@ -30,13 +30,12 @@ while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
    sleep 1
 done
 echo
-apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark -y
+apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash -y
 
 
 ###Install ELK Stack
 echo "Installing ELK Stack"
-echo "Installing Dependencies"
-apt-get -qq install oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash -y
+echo
 
 ###Elastisearch
 echo "Installing Elasticsearch"
@@ -64,7 +63,6 @@ htpasswd -c /etc/nginx/htpasswd.users $kibanauser
  
 #####Creates site default file
 mv /etc/nginx/sites-available/default /etc/nginx/
-
 
 cp $dir/lib/default /etc/nginx/sites-available/
 
