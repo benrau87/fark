@@ -21,7 +21,7 @@ echo
 echo "What would you like your SQL username to be?"
 read name
 
--u postgres createuser -d -P -R -S $name
+sudo -u postgres createuser -d -P -R -S $name
 
 echo
 echo "Please retype the same password you just created"
