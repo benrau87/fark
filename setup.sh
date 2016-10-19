@@ -123,7 +123,8 @@ echo
 echo
 
 mkdir /$HOME/Desktop/clientinstall.$HOSTNAME
-
+cp -r /usr/share/grr-server/executables/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/
+mv $HOME/Desktop/clientinstall.$HOSTNAME/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/GRR_installers
 
 sleep 2
 
@@ -202,8 +203,7 @@ then
     cd volatility
     python setup.py install
 fi
-cp -r /usr/share/grr-server/executables/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/
-mv $HOME/Desktop/clientinstall.$HOSTNAME/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/GRR_installers
+
 cp $dir/lib/*.desktop ~/Desktop/
 chmod 755 ~/Desktop/*.desktop
 chown $USER:$USER $HOME/Desktop/*
