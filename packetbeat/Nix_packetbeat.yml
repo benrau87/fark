@@ -32,14 +32,14 @@ protocols:
 
 output:
   logstash:
-    hosts: ["servername:5044"]
+    hosts: ["localhost:5044"]
   file:
-    path: "/var/log/packetbeat/:
+    path: "/var/log/packetbeat/"
     filename: packetbeat.log
     number_of_files: 60
 
 
-tls:
+#tls:
       # List of root certificates for HTTPS server verifications
-      certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
+      #certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
 
