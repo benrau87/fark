@@ -33,6 +33,10 @@ protocols:
 output:
   logstash:
     hosts: ["servername:5044"]
+  file:
+    path: "/var/log/:
+    filename: packetbeat.log
+    keepfiles: 60
 
 
 tls:
