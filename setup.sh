@@ -106,11 +106,11 @@ echo
 
 bash $dir/supporting_scripts/ELK_reload.sh
 
-cp -r $dir/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-cp -r $dir/filebeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-cp -r $dir/metricbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-cp -r $dir/topbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-cp -r $dir/winlogbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/packetbeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/filebeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/metricbeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/topbeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/winlogbeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
 cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
 
 ####GRR Install###################################################################################################
