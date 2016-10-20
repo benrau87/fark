@@ -49,4 +49,4 @@ for dashboard in ${dashboard_list}; do
     done
 done
 
-bash ./ELK_reload.sh
+
