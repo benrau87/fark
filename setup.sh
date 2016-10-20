@@ -2,6 +2,8 @@
 ###Clients will install with pointers to the server hostname
 ###If you have not setup a DNS A-record for this machine, you will #need to before the clients can contact the server.
 
+####APT Update####################################################################################################
+##################################################################################################################
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit 1
@@ -33,7 +35,8 @@ echo "Updating APT and installing dependencies"
 apt-get -qq update && apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark oracle-java8-installer elasticsearch kibana nginx apache2-utils logstash -y
 
 
-###Install ELK Stack
+####ELK Install###################################################################################################
+##################################################################################################################
 echo "Installing ELK Stack"
 echo
 
@@ -90,6 +93,9 @@ curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.
 
 apt-get -qq install unzip -y
 
+###Install beats input plugin
+/opt/logstash/bin/plugin install logstash-input-beats
+
 sleep 2
 
 unzip beats-dashboards-*.zip
@@ -98,7 +104,9 @@ cd beats-dashboards-*
 ./load.sh
 echo
 
-####GRR Install
+bash $dir/supporting_scripts/ELK_reload.sh
+####GRR Install###################################################################################################
+##################################################################################################################
 
 echo "Installing GRR"
 echo
