@@ -105,6 +105,14 @@ cd beats-dashboards-*
 echo
 
 bash $dir/supporting_scripts/ELK_reload.sh
+
+cp -r $dir/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/filebeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/metricbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/topbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp -r $dir/winlogbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
+cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
+
 ####GRR Install###################################################################################################
 ##################################################################################################################
 
@@ -133,18 +141,13 @@ mv $HOME/Desktop/clientinstall.$HOSTNAME/installers/ $HOME/Desktop/clientinstall
 
 sleep 2
 
+####Extras Install###################################################################################################
+#####################################################################################################################
 read -p "Do you want to download Beats shippers? Y/N" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
-  ###Configure packetbeat clients
-  cp -r $dir/packetbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-  cp -r $dir/filebeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-  cp -r $dir/metricbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-  cp -r $dir/topbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-  cp -r $dir/winlogbeat /$HOME/Desktop/clientinstall.$HOSTNAME/
-  cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTNAME/
-###  bash $dir/supporting_scripts/beats_download.sh
+  bash $dir/supporting_scripts/beats_download.sh
 fi
 
 ###SOF-ELK setup
@@ -158,7 +161,6 @@ bash $dir/supporting_scripts/test.sh
 bash $dir/supporting_scripts/ELK_reload.sh
 fi
 
-##################################Test
 ###Forensic tools install
 echo
 read -p "Do you want to install forensic tools? Y/N" -n 1 -r
