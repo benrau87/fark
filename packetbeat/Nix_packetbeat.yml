@@ -34,7 +34,7 @@ output:
   logstash:
     hosts: ["servername:5044"]
   file:
-    path: "/var/log/:
+    path: "/var/log/packetbeat/:
     filename: packetbeat.log
     number_of_files: 60
 
