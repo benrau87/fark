@@ -36,7 +36,7 @@ output:
   file:
     path: "/var/log/:
     filename: packetbeat.log
-    keepfiles: 60
+    number_of_files: 60
 
 
 tls:
