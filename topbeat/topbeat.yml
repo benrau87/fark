@@ -21,6 +21,6 @@ input:
     # cpu usage per core, by default is false
     cpu_per_core: false
  
- output:
+output:
   logstash:
     hosts: ["localhost:5044"]
