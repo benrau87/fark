@@ -1,6 +1,7 @@
 filebeat:
   prospectors: 
   -
+  -
   paths:
     - "/var/log/*.log"
     - "/var/log/syslog"
