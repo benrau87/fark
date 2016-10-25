@@ -1,8 +1,11 @@
 filebeat:
-  prospectors: -
+  prospectors: 
+  -
   paths:
-    - /var/log/*.log
-    - /var/log/syslog 
+    - "/var/log/*.log"
+    - "/var/log/syslog"
+    - "/var/log/apache/httpd-*.log"
+    - "/var/log/nginx/*.log
   registry_file: /var/lib/filebeat/registry
 output:
   logstash:
