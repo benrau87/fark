@@ -2,11 +2,9 @@ filebeat:
   prospectors: 
    -
     paths:
-      - "/var/log/*.log"
-      - "/var/log/syslog"
-      - "/var/log/apache/httpd-*.log"
-      - "/var/log/nginx/*.log"
-    
+      - /private/var/log/system.log
+      - /private/var/log/accountpolicy.log
+      - /private/var/log/install.log
 output:
   logstash:
     hosts: ["localhost:5044"]
