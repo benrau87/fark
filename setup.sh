@@ -2,6 +2,10 @@
 ###Clients will install with pointers to the server hostname
 ###If you have not setup a DNS A-record for this machine, you will #need to before the clients can contact the server.
 
+exec 5> debug_output.txt
+BASH_XTRACEFD="5"
+PS4='$LINENO: '
+
 ####APT Update####################################################################################################
 ##################################################################################################################
 if [ "$EUID" -ne 0 ]
