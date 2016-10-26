@@ -105,7 +105,7 @@ cd beats-dashboards-*
 echo
 
 bash $dir/supporting_scripts/ELK_reload.sh
-
+mkdir /$HOME/Desktop/clientinstall.$HOSTNAME
 cp -r $dir/packetbeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
 cp -r $dir/filebeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
 cp -r $dir/metricbeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
@@ -135,7 +135,6 @@ echo "Creating directory for GRR installers"
 echo 
 echo
 
-mkdir /$HOME/Desktop/clientinstall.$HOSTNAME
 cp -r /usr/share/grr-server/executables/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/
 mv $HOME/Desktop/clientinstall.$HOSTNAME/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/GRR_installers
 
