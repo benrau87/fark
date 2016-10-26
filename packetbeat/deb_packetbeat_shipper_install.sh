@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.0.0-amd64.deb
-
+apt-get -qq install libpcap -y
 dpkg -i packetbeat-*
 
 rm /etc/packetbeat/packetbeat.yml
