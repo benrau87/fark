@@ -9,7 +9,7 @@ wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.0.0-am
 apt-get -qq install libpcap -y
 dpkg -i packetbeat-*
 
-rm /etc/packetbeat/packetbeat.yml
+rm /etc/packetbeat/*.yml
 git clone https://github.com/benrau87/beats.git
 cd beats/packetbeat/
 
