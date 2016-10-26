@@ -1,7 +1,10 @@
 #!/bin/bash
 
 ###Installs packetbeat shipper on Linux_64-bit
-
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit 1
+fi
 wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.0.0-amd64.deb
 
 dpkg -i packetbeat-*
