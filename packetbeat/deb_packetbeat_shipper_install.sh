@@ -7,8 +7,10 @@ wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.0.0-am
 dpkg -i packetbeat-*
 
 rm /etc/packetbeat/packetbeat.yml
+git clone https://github.com/benrau87/beats.git
+cd beats/packetbeat/
 
-cp ~/forensic-grr-elk/packetbeat/Nix_packetbeat.yml /etc/packetbeat/packetbeat.yml
+cp Nix_packetbeat.yml /etc/packetbeat/packetbeat.yml
 
 service packetbeat restart
 
