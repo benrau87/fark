@@ -15,7 +15,7 @@ git clone https://github.com/benrau87/beats.git
 cd beats/packetbeat/
 
 cp Nix_packetbeat.yml /etc/packetbeat/packetbeat.yml
-
+update-rc.d packetbeat defaults 95 10
 service packetbeat restart
 
 
