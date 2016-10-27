@@ -216,7 +216,7 @@ then
     cd volatility
     python setup.py install
 fi
-cp $dir/sof_dashboards/optiv_logo.png /usr/local/sof-elk/
+cp $dir/sof_dashboards/optiv_logo.png /usr/local/
 cp $dir/lib/*.desktop ~/Desktop/
 chmod 755 ~/Desktop/*.desktop
 chown $USER:$USER $HOME/Desktop/*
