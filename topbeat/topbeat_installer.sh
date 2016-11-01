@@ -14,7 +14,7 @@ rm /etc/topbeat/*.yml
 git clone https://github.com/benrau87/beats.git
 cd beats/topbeat/
 
-cp topbeat.yml /etc/packetbeat/topbeat.yml
+cp topbeat.yml /etc/topbeat/topbeat.yml
 update-rc.d topbeat defaults 95 10
 systemctl enable topbeat.service
 service topbeat restart
