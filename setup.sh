@@ -92,7 +92,7 @@ cp $dir/logstash_conf/default/*.conf /etc/logstash/conf.d/
 
 ###Install netflow dashboards for Kibana
 cd  $dir
-curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
+curl -L -O https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
 apt-get -qq install unzip -y
 
 ###Install beats input plugin
