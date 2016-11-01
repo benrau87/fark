@@ -52,19 +52,22 @@ echo
 ###Elastisearch
 echo "Configuring Elasticsearch"
 update-rc.d elasticsearch defaults 95 10
+systemctl enable elasticsearch.service
 service elasticsearch start
 sleep 2
 
 ###Logstash
 echo "Configuring Logstash"
 update-rc.d logstash 95 10
+systemctl enable logstash.service
 service logstash start
 sleep 2
 
 ###Kiabana
 echo "Configuring Kibana"
 echo "server.host: 127.0.0.1" | tee -a /opt/kibana/config/kibana.yml 
-update-rc.d kibana defaults 96 9
+update-rc.d kibana defaults 95 10
+systemctl enable kibana.service
 service kibana start
 sleep 2
 echo ------------------------------------------------
