@@ -16,6 +16,7 @@ cd beats/packetbeat/
 
 cp Nix_packetbeat.yml /etc/packetbeat/packetbeat.yml
 update-rc.d packetbeat defaults 95 10
+systemctl enable packetbeat.service
 service packetbeat restart
 
 
