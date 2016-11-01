@@ -7,15 +7,14 @@ if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit 1
 fi
-wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.0.0-amd64.deb
-apt-get -qq install libpcap0.8 -y
-dpkg -i packetbeat-*
+wget https://download.elastic.co/beats/topbeat/topbeat_1.3.1_amd64.deb
+dpkg -i topbeat_*
 
-rm /etc/packetbeat/*.yml
+rm /etc/topbeat/*.yml
 git clone https://github.com/benrau87/beats.git
-cd beats/packetbeat/
+cd beats/topbeat/
 
-cp Nix_packetbeat.yml /etc/packetbeat/packetbeat.yml
-update-rc.d packetbeat defaults 95 10
-systemctl enable packetbeat.service
-service packetbeat restart
+cp topbeat.yml /etc/packetbeat/topbeat.yml
+update-rc.d topbeat defaults 95 10
+systemctl enable topbeat.service
+service topbeat restart
