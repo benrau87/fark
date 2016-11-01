@@ -46,27 +46,27 @@ while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
 done
 ####ELK Install###################################################################################################
 ##################################################################################################################
-echo "Installing ELK Stack"
+echo "Configuring ELK Stack"
 echo
 
 ###Elastisearch
-echo "Installing Elasticsearch"
+echo "Configuring Elasticsearch"
 update-rc.d elasticsearch defaults 95 10
 service elasticsearch start
-systemctl enable elasticsearch.service
+sleep 2
 
+###Logstash
+echo "Configuring Logstash"
+update-rc.d logstash 95 10
+service logstash start
 sleep 2
 
 ###Kiabana
-echo "Installing Kibana"
+echo "Configuring Kibana"
 echo "server.host: 127.0.0.1" | tee -a /opt/kibana/config/kibana.yml 
-
 update-rc.d kibana defaults 96 9
 service kibana start
-systemctl enable kibana.service
-
 sleep 2
-
 echo ------------------------------------------------
 echo ------------------------------------------------
 echo What would you like your Kibana username to be?
@@ -75,42 +75,30 @@ htpasswd -c /etc/nginx/htpasswd.users $kibanauser
  
 #####Creates site default file
 mv /etc/nginx/sites-available/default /etc/nginx/
-
 cp $dir/lib/default /etc/nginx/sites-available/
-
 service nginx restart
-
 sleep 2
 
 ###Create Certs
 mkdir -p /etc/pki/tls/certs
 mkdir /etc/pki/tls/private
-
 cd /etc/pki/tls; sudo openssl req -subj '/CN=GRR_Server/' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
 
 ###Setup Beats for Logstash input to Elastisearch output
-
 cp $dir/logstash_conf/default/*.conf /etc/logstash/conf.d/
-
-service logstash start
 
 ###Install netflow dashboards for Kibana
 cd  $dir
 curl -L -O -# https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
-
 apt-get -qq install unzip -y
 
 ###Install beats input plugin
 /opt/logstash/bin/plugin install logstash-input-beats
-
 sleep 2
-
 unzip beats-dashboards-*.zip
-
 cd beats-dashboards-*
 ./load.sh
 echo
-
 bash $dir/supporting_scripts/ELK_reload.sh
 mkdir /$HOME/Desktop/clientinstall.$HOSTNAME
 cp -r $dir/packetbeat/ /$HOME/Desktop/clientinstall.$HOSTNAME/
@@ -125,14 +113,12 @@ cp /etc/pki/tls/certs/logstash-forwarder.crt /$HOME/Desktop/clientinstall.$HOSTN
 
 echo "Installing GRR"
 echo
-#Wait for dpkg process to finish
 echo "Waiting for dpkg process to free up..."
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
    sleep 1
 done
 cd ~
 wget -q https://raw.githubusercontent.com/google/grr/master/scripts/install_script_ubuntu.sh
-
 sudo bash install_script_ubuntu.sh
 
 ###Copy exe's to Desktop
@@ -141,10 +127,8 @@ echo
 echo "Creating directory for GRR installers"
 echo 
 echo
-
 cp -r /usr/share/grr-server/executables/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/
 mv $HOME/Desktop/clientinstall.$HOSTNAME/installers/ $HOME/Desktop/clientinstall.$HOSTNAME/GRR_installers
-
 sleep 2
 
 ####Extras Install###################################################################################################
@@ -174,7 +158,6 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo ""
-    
     mkdir ~/Desktop/Cases 
     mkdir ~/Desktop/Tools
   
@@ -216,11 +199,12 @@ then
     cd volatility
     python setup.py install
 fi
+###Cleanup and add shortcuts
 cp $dir/sof_dashboards/optiv_logo.png /usr/local/
 cp $dir/lib/*.desktop ~/Desktop/
 chmod 755 ~/Desktop/*.desktop
 chown $USER:$USER $HOME/Desktop/*
-####################################End test
+
 echo
 echo
 echo "Your GRR-ELK stack has been installed, client installations are located on your desktop in a folder called clientinstall.$HOSTNAME"
