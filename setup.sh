@@ -167,6 +167,7 @@ then
 # Add scripts from different sources
     cd ~/Desktop/Tools/
     apt-get -qq install sleuthkit -y
+    wget https://sourceforge.net/projects/autopsy/files/latest/download?source=files
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
     wget -q -O ~/Desktop/Tools/vt.py \
     https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
