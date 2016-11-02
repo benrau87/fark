@@ -1,1 +1,8 @@
-
+[Desktop Entry]  
+Version=1.0  
+Exec=/usr/bin/autopsy 
+Name=Autopsy  
+Encoding=UTF-8  
+Terminal=true  
+Type=Application  
+Categories=Application;Network;
