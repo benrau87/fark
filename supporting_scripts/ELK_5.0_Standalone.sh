@@ -5,8 +5,6 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
-dir=$PWD
-
 echo "Adding Repos"
 echo
 echo
@@ -68,7 +66,8 @@ htpasswd -c /etc/nginx/htpasswd.users $kibanauser
  
 #####Creates site default file
 mv /etc/nginx/sites-available/default /etc/nginx/
-cp $dir/lib/default /etc/nginx/sites-available/
+cd ..
+cp /lib/default /etc/nginx/sites-available/
 service nginx restart
 sleep 2
 
