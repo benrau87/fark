@@ -17,4 +17,9 @@ cd beats/topbeat/
 cp topbeat.yml /etc/topbeat/topbeat.yml
 update-rc.d topbeat defaults 95 10
 systemctl enable topbeat.service
+
+echo "What is the IP or Hostname of your Logstash server?"
+read IP
+perl -pi -e s/localhost/$IP/g /etc/topbeat/topbeat.yml
+
 service topbeat restart
