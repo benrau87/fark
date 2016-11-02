@@ -20,6 +20,5 @@ systemctl enable filebeat.service
 
 echo "What is the IP or Hostname of your Logstash server?"
 read IP
-perl -pi -e 's/localhost/$IP/g' /etc/filebeat/filebeat.yml
 
 service filebeat restart
