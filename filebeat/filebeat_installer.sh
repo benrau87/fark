@@ -17,4 +17,9 @@ cd beats/filebeat/
 cp Nix_filebeat.yml /etc/filebeat/filebeat.yml
 update-rc.d filebeat defaults 95 10
 systemctl enable filebeat.service
+
+echo "What is the IP or Hostname of your Logstash server?"
+read IP
+perl -pi -e 's/localhost/$IP/g' /etc/filebeat/filebeat.yml
+
 service filebeat restart
