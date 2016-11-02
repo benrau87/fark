@@ -11,10 +11,10 @@ kibana_index=.kibana
 
 index_patterns="httpdlog netflow syslog"
 
-#kibana_version=$( jq -r '.version' < /opt/kibana/package.json )
-#kibana_build=$(jq -r '.build.number' < /opt/kibana/package.json )
-kibana_version=$( jq -r '.version' < /usr/share/kibana/package.json )
-kibana_build=$(jq -r '.build.number' < /usr/share/kibana/package.json )
+kibana_version=$( jq -r '.version' < /opt/kibana/package.json )
+kibana_build=$(jq -r '.build.number' < /opt/kibana/package.json )
+#kibana_version=$( jq -r '.version' < /usr/share/kibana/package.json )
+#kibana_build=$(jq -r '.build.number' < /usr/share/kibana/package.json )
 
 dashboard_list="httpd introductory netflow syslog"
 dashboard_dir="/usr/local/sof-elk/sof_dashboards/"
