@@ -136,12 +136,6 @@ sleep 2
 
 ####Extras Install###################################################################################################
 #####################################################################################################################
-read -p "Do you want to download Beats shippers? Y/N" -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-  bash $dir/supporting_scripts/beats_download.sh
-fi
 
 ###SOF-ELK setup
 echo
