@@ -70,6 +70,7 @@ cd ..
 cd lib/
 cp default /etc/nginx/sites-available/
 service nginx restart
+cp kibana.desktop ~/Desktop/
 sleep 2
 
 
