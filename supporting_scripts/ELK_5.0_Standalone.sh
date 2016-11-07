@@ -67,7 +67,8 @@ htpasswd -c /etc/nginx/htpasswd.users $kibanauser
 #####Creates site default file
 mv /etc/nginx/sites-available/default /etc/nginx/
 cd ..
-cp /lib/default /etc/nginx/sites-available/
+cd lib/
+cp default /etc/nginx/sites-available/
 service nginx restart
 sleep 2
 
