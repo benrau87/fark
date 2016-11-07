@@ -1,6 +1,12 @@
+#[Desktop Entry]
+#Encoding=UTF-8
+#Name=Autopsy
+#Type=Applications
+#Exec=/usr/bin/autopsy
+#Icon=/usr/local/optiv_logo.png
 [Desktop Entry]
 Encoding=UTF-8
 Name=Autopsy
-Type=Applications
-Exec=/usr/bin/autopsy
+Type=Link
+URL=http://localhost/autopsy:9999
 Icon=/usr/local/optiv_logo.png
