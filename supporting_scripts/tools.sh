@@ -1,6 +1,9 @@
 #!/bin/bash
 ###Forensic tools install
-
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit 1
+fi
     echo ""
     mkdir ~/Desktop/Cases 
     mkdir ~/Desktop/Tools
