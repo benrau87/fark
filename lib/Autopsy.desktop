@@ -8,5 +8,5 @@
 Encoding=UTF-8
 Name=Autopsy
 Type=Link
-URL=http://localhost/autopsy:9999
+URL=http://localhost:9999/autopsy
 Icon=/usr/local/optiv_logo.png
