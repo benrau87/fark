@@ -3,12 +3,12 @@ if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit 1
 fi
-echo "Stopping services"
-service logstash stop
-service elasticsearch stop
-service kibana stop
-service nginx stop
+#echo "Stopping services"
+#service logstash stop
+#service elasticsearch stop
+#service kibana stop
+#service nginx stop
 
-./bin/plugin install https://github.com/elastic/elasticsearch-migration/releases/download/v2.0.1/elasticsearch-migration-2.0.1.zip
+./usr/share/elasticsearch/bin/plugin install https://github.com/elastic/elasticsearch-migration/releases/download/v2.0.1/elasticsearch-migration-2.0.1.zip
 
 echo "Please navigate to http://localhost:9200/_plugin/elasticsearch-migration"
