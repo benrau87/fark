@@ -1,18 +1,17 @@
 #!/bin/bash
 ###Forensic tools install
-echo
-read -p "Do you want to install forensic tools? Y/N" -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+
     echo ""
     mkdir ~/Desktop/Cases 
     mkdir ~/Desktop/Tools
   
 # Add scripts from different sources
     cd ~/Desktop/Tools/
-    apt-get -qq install sleuthkit autopsy -y
-    
+    apt-get install sleuthkit autopsy -y
+#Critical Stack
+    curl https://packagecloud.io/install/repositories/criticalstack/critical-stack-intel/script.deb.sh | sudo bash
+    sudo apt-get install critical-stack-intel
+
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
     wget -q -O ~/Desktop/Tools/vt.py \
     https://raw.githubusercontent.com/Xen0ph0n/VirusTotal_API_Tool/master/vt.py && \
