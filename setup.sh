@@ -41,7 +41,7 @@ echo "Updating APT and installing dependencies"
 
 apt-get -qq update
 apt-get -qq dist-upgrade -y
-apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv jq tshark -y
+apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv geoip-database-contrib jq tshark -y
 apt-get -qq install oracle-java8-installer -y
 apt-get -qq install elasticsearch kibana nginx apache2-utils logstash -y
 
