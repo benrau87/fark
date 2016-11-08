@@ -12,8 +12,9 @@ fi
     cd ~/Desktop/Tools/
     apt-get install sleuthkit autopsy -y
 #Critical Stack
-    wget -q -O https://intel.criticalstack.com/client/critical-stack-intel-amd64.deb
+    wget -q --no-check-certificate https://intel.criticalstack.com/client/critical-stack-intel-amd64.deb
     dpkg -i critical-stack-intel*
+    critical-stack-intel apt 8495cbdf-d456-4e21-6467-a26d10219756
 
 # https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
     wget -q -O ~/Desktop/Tools/vt.py \
