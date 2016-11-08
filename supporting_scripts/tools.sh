@@ -50,4 +50,4 @@ fi
     echo "Dwonloaded Volatility"
     cd volatility
     python setup.py install
-fi
+
