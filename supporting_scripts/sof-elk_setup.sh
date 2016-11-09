@@ -17,3 +17,4 @@ cp -r ~/forensic-grr-elk/sof_dashboards/* /usr/local/sof-elk/sof_dashboards/
 cp ~/forensic-grr-elk/grok-patterns/* /usr/local/sof-elk/grok-patterns/
 cp ~/forensic-grr-elk/lib/custom/* /usr/local/sof-elk/lib/
 
+bash /usr/share/elasticsearch/bin/plugin install ingest-geopip
