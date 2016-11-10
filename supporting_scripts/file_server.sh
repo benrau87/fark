@@ -10,6 +10,11 @@ cd ~/Desktop
 mkdir $HOSTNAME.fileserver
 cd $HOSTNAME.fileserver
 cp ~/Desktop/clientinstall.$HOSTNAME/logstash-forwarder.crt ~/Desktop/$HOSTNAME.fileserver/
+touch start_server.sh
+chmod +x start_server.sh
+echo " #!/bin/bash
+       python -m SimpleHTTPServer 8181" > start_server.sh
+
 echo
 echo "What is the IP or Hostname of the machine running the ELK Stack?"
 read IP
