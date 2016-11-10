@@ -2,5 +2,5 @@
 Encoding=UTF-8
 Name=Kibana
 Type=Link
-URL=http://localhost
+URL=http://localhost:88
 Icon=/usr/local/optiv_logo.png
