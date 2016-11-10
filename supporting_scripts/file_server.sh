@@ -35,6 +35,3 @@ echo
 echo "Starting simple file server"
 echo 
 python -m SimpleHTTPServer 8181
-echo
-echo "Navigate to this machine on the above port to access client installs"
-echo "Closing this window will stop the file server"
