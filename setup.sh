@@ -166,7 +166,7 @@ then
 fi
 ###ADHD tool
 echo
-read -p "Do you want to install counter-hacking tools? Y/N" -n 1 -r
+read -p "Do you want to install counter-hacking tools? ***This will need additional input from you and will take some time*** Y/N" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
