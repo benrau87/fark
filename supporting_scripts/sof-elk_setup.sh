@@ -12,9 +12,9 @@ mkdir /usr/local/sof-elk/lib
 mkdir /usr/local/sof-elk/grok-patterns
 mkdir /usr/local/sof-elk/sof_dashboards
 
-cp -r ~/forensic-grr-elk/dashboards/* /usr/local/sof-elk/
-cp -r ~/forensic-grr-elk/sof_dashboards/* /usr/local/sof-elk/sof_dashboards/
-cp ~/forensic-grr-elk/grok-patterns/* /usr/local/sof-elk/grok-patterns/
-cp ~/forensic-grr-elk/lib/custom/* /usr/local/sof-elk/lib/
+cp -r ~/fark/dashboards/* /usr/local/sof-elk/
+cp -r ~/fark/sof_dashboards/* /usr/local/sof-elk/sof_dashboards/
+cp ~/fark/grok-patterns/* /usr/local/sof-elk/grok-patterns/
+cp ~/fark/lib/custom/* /usr/local/sof-elk/lib/
 
 bash /usr/share/elasticsearch/bin/plugin install ingest-geopip
