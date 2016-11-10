@@ -9,7 +9,7 @@ fi
 cd ~/Desktop
 mkdir $HOSTNAME.fileserver
 cd $HOSTNAME.fileserver
-
+cp ~/Desktop/clientinstall.$HOSTNAME/logstash-forwarder.crt ~/Desktop/$HOSTNAME.fileserver/
 echo
 echo "What is the IP or Hostname of the machine running the ELK Stack?"
 read host
