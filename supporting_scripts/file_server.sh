@@ -31,6 +31,8 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.0-amd64.
 wget https://download.elastic.co/beats/topbeat/topbeat_1.3.1_amd64.deb
 wget https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-5.0.0-windows-x86_64.zip
 
+cp -rf ~/Desktop/clientinstall.$HOSTNAME/GRR_installers $PWD
+
 echo 
 echo "Starting simple file server"
 echo 
