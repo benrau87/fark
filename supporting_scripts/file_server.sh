@@ -12,10 +12,15 @@ cd $HOSTNAME.fileserver
 cp ~/Desktop/clientinstall.$HOSTNAME/logstash-forwarder.crt ~/Desktop/$HOSTNAME.fileserver/
 echo
 echo "What is the IP or Hostname of the machine running the ELK Stack?"
-read host
+read IP
 echo "Downloading beats shippers"
 
 git clone https://github.com/benrau87/beats.git
+cd beats/
+perl -pi -e s/localhost/$IP/g packetbeat/Nix_packetbeat.yml
+perl -pi -e s/localhost/$IP/g topbeat/topbeat.yml
+perl -pi -e s/localhost/$IP/g filebeat/Nix_filebeat.yml
+
 wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.0.0-amd64.deb
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.0-amd64.deb
 wget https://download.elastic.co/beats/topbeat/topbeat_1.3.1_amd64.deb
