@@ -7,7 +7,7 @@ winlogbeat:
     - name: System
     - name: Windows PowerShell
     - name: Microsoft-Windows-Windows Firewall With Advanced Security/Firewall
-    
+tags: ["winlogbeat"]  
 output:
   logstash:
     hosts: ["localhost:5044"]
