@@ -40,11 +40,10 @@ echo
 echo "Updating APT and installing dependencies"
 
 apt-get -qq update
-apt-get -qq dist-upgrade -y
-apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv geoip-database-contrib jq tshark -y
-apt-get -qq install oracle-java8-installer -y
+apt-get -qq install oracle-java8-installer tshark -y
+apt-get -qq install ctags curl git vim vim-doc vim-scripts exfat-fuse exfat-utils zip python-virtualenv geoip-database-contrib jq  -y
 apt-get -qq install elasticsearch kibana nginx apache2-utils logstash -y
-
+apt-get -qq dist-upgrade -y
 #Wait for dpkg process to finish
 echo "Waiting for dpkg process to free up..."
 while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
