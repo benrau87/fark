@@ -164,6 +164,14 @@ then
     echo
     bash $dir/supporting_scripts/tools.sh
 fi
+###ADHD tool
+echo
+read -p "Do you want to install counter-hacking tools? Y/N" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  bash -c "$(curl -sL https://raw.githubusercontent.com/adhdproject/buildkit/master/adhd-install.sh)"
+fi
 ###Cleanup and add shortcuts
 cp $dir/sof_dashboards/optiv_logo.png /usr/local/
 cp $dir/lib/*.desktop ~/Desktop/
@@ -174,7 +182,7 @@ echo
 echo
 echo "Your GRR-ELK stack has been installed, client installations are located on your desktop in a folder called clientinstall.$HOSTNAME"
 echo
-echo "Your GRR dashboard is located at $HOSTNAME:8000 and your Kibana dashboard is at $HOSTNAME:80"
+echo "Your GRR dashboard is located at $HOSTNAME:8000 and your Kibana dashboard is at $HOSTNAME:88"
 echo
 echo "If you need to configure packetbeat, you will need to modify the yml file by replacing the server:5044 with the logstash server host/ip. You will also need to install the included .crt for the client to use."
 echo
