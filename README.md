@@ -1,4 +1,5 @@
-# forensic-grr-elk
+# fark
+Welcome to the Forensic and Active Response Kit
 Repo for work on setting up a centralized server for incident response.
 git clone to ~ and chmod +x setup.sh
 
