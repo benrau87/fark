@@ -24,4 +24,7 @@ wget https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-5.0.0-wi
 echo 
 echo "Starting simple file server"
 echo 
-python -m SimpleHTTPServer 8080
+python -m SimpleHTTPServer 8181
+echo
+echo "Navigate to this machine on the above port to access client installs"
+echo "Closing this window will stop the file server"
