@@ -1,7 +1,6 @@
-Add option to download beats shippers.
-Create script to install shippers/certs on Nix
-Create .msi for installing shipper/certs on Windows
-Add folders to place log files for parsing by logstash
+Add:
+https://github.com/syphon1c/Threatelligence/blob/master/Install.md
+Cuckoo_host integration
 
 Demo
   Install script on Ubuntu Server (MATE)
