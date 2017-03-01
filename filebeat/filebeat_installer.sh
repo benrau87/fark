@@ -24,7 +24,7 @@ systemctl enable filebeat.service
 perl -pi -e s/localhost/$IP/g /etc/filebeat/filebeat.yml
 
 cd ..
-mkdir /usr/share/ca-certificates/logstash
+mkdir /usr/local/share/ca-certificates/logstash
 chmod 755 /usr/share/ca-certificates/logstash
 mv logstash-forwarder.crt /usr/share/ca-certificates/logstash/
 
