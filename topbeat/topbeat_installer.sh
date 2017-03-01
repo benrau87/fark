@@ -24,8 +24,7 @@ systemctl enable topbeat.service
 perl -pi -e s/localhost/$IP/g /etc/topbeat/topbeat.yml
 
 cd ..
-mkdir
-/usr/share/ca-certificates/logstash
+mkdir /usr/share/ca-certificates/logstash
 chmod 755 /usr/share/ca-certificates/logstash
 mv logstash-forwarder.crt /usr/share/ca-certificates/logstash/
 
