@@ -25,8 +25,8 @@ perl -pi -e s/localhost/$IP/g /etc/filebeat/filebeat.yml
 
 cd ..
 mkdir /usr/local/share/ca-certificates/logstash
-chmod 755 /usr/share/ca-certificates/logstash
-mv logstash-forwarder.crt /usr/share/ca-certificates/logstash/
+chmod 755 /usr/local/share/ca-certificates/logstash
+mv logstash-*.crt /usr/local/share/ca-certificates/logstash/
 
 update-ca-certificates
 service filebeat restart
