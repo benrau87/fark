@@ -133,7 +133,8 @@ server {
             proxy_cache_bypass $http_upgrade;        
         }
     }
-EOF &>> $logfile
+EOF
+
 error_check 'Site configured'
 mv /tmp/kibana /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana
