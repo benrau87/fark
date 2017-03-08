@@ -1,8 +1,9 @@
   server {
-        listen 88;
-
+  
+        listen 443 ssl;
         server_name $HOSTNAME;
-
+        ssl_certificate /etc/nginx/ssl/kibana.crt;
+        ssl_certificate_key /etc/nginx/ssl/kibana.key;
         auth_basic "Restricted Access";
         auth_basic_user_file /etc/nginx/htpasswd.users;
 
