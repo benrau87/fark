@@ -94,7 +94,7 @@ cp nginx.service /lib/systemd/system/
 mkdir /etc/ssl/kibana/ &>> $logfile
 cd /etc/ssl/kibana/ &>> $logfile
 #openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout cuckoo.key -out cuckoo.crt 
-print_status "${YELLOW}Configuring and installing SSL keys...${NC}"
+print_status "${YELLOW}Configuring and installing SSL keys...go get a sandwich${NC}"
 openssl req -subj '/CN=Kibana/'-x509 -nodes -days 3650 -newkey rsa:4096 -keyout kibana.key -out kibana.crt &>> $logfile
 openssl dhparam -out dhparam.pem 4096 &>> $logfile
 error_check 'SSL configured'
