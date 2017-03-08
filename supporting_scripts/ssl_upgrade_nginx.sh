@@ -88,43 +88,31 @@ apt-get -qq install nginx apache2-utils -y &>> $logfile
 error_check 'Nginx installed'
 
 ##Create and secure keys
-mkdir /etc/ssl/kibana/ &>> $logfile
-cd /etc/ssl/kibana/ &>> $logfile
+mkdir /etc/nginx/ssl &>> $logfile
+cd /etc/nginx/ssl &>> $logfile
 print_status "${YELLOW}Configuring and installing SSL keys...go get a sandwich${NC}"
 openssl req -subj '/CN=Kibana/'-x509 -nodes -days 3650 -newkey rsa:4096 -keyout kibana.key -out kibana.crt &>> $logfile
 openssl dhparam -out dhparam.pem 4096 &>> $logfile
 error_check 'SSL configured'
 cd ..
-mv kibana /etc/nginx &>> $logfile
-mv /etc/nginx/kibana /etc/nginx/ssl &>> $logfile
 chown -R root:www-data /etc/nginx/ssl &>> $logfile
 chmod -R u=rX,g=rX,o= /etc/nginx/ssl &>> $logfile
 
 ##Remove default sites and create new cuckoo site
 rm /etc/nginx/sites-enabled/default &>> $logfile
 print_status "${YELLOW}Configuring Nginx webserver...${NC}"
-sudo tee -a /tmp/kibana <<EOF
-server {
-    listen $ipaddr:443 ssl http2;
-    ssl_certificate /etc/nginx/ssl/kibana.crt;
-    ssl_certificate_key /etc/nginx/ssl/kibana.key;
-    ssl_dhparam /etc/nginx/ssl/dhparam.pem;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-    ssl_ecdh_curve secp384r1; # Requires nginx >= 1.1.0
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_tickets off; # Requires nginx >= 1.5.9
-    # Uncomment this next line if you are using a signed, trusted cert
-    #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-    add_header X-Frame-Options SAMEORIGIN;
-    add_header X-Content-Type-Options nosniff;
-    root /usr/share/nginx/html;
-    index index.html index.htm;
-    client_max_body_size 101M;
-    auth_basic "Login required";
-    auth_basic_user_file /etc/nginx/htpasswd.users;
-  location / {
+
+tee -a /tmp/kibana <<EOF
+  server {
+  
+        listen 443 ssl;
+        server_name $HOSTNAME;
+        ssl_certificate /etc/nginx/ssl/kibana.crt;
+        ssl_certificate_key /etc/nginx/ssl/kibana.key;
+        auth_basic "Restricted Access";
+        auth_basic_user_file /etc/nginx/htpasswd.users;
+
+        location / {
             proxy_pass http://localhost:5601;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -132,14 +120,12 @@ server {
             proxy_set_header Host $host;
             proxy_cache_bypass $http_upgrade;        
         }
-    }
+    
 EOF
 
 error_check 'Site configured'
 mv /tmp/kibana /etc/nginx/sites-available/
-ln -s /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana
+mv /etc/nginx/sites-available/kibana /etc/nginx/sites-available/default
 
 ##Create and restart service
-systemctl enable nginx.service
-update-rc.d nginx defaults
 service nginx restart
