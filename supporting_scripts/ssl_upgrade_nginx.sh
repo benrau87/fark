@@ -85,15 +85,11 @@ while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
 done
 print_status "${YELLOW}Installing Nginx...${NC}"
 apt-get -qq install nginx apache2-utils -y &>> $logfile
-
 error_check 'Nginx installed'
-##Copy over service conf
-cp nginx.service /lib/systemd/system/
 
 ##Create and secure keys
 mkdir /etc/ssl/kibana/ &>> $logfile
 cd /etc/ssl/kibana/ &>> $logfile
-#openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout cuckoo.key -out cuckoo.crt 
 print_status "${YELLOW}Configuring and installing SSL keys...go get a sandwich${NC}"
 openssl req -subj '/CN=Kibana/'-x509 -nodes -days 3650 -newkey rsa:4096 -keyout kibana.key -out kibana.crt &>> $logfile
 openssl dhparam -out dhparam.pem 4096 &>> $logfile
@@ -106,9 +102,7 @@ chmod -R u=rX,g=rX,o= /etc/nginx/ssl &>> $logfile
 
 ##Remove default sites and create new cuckoo site
 rm /etc/nginx/sites-enabled/default &>> $logfile
-
 print_status "${YELLOW}Configuring Nginx webserver...${NC}"
-
 sudo tee -a /tmp/kibana <<EOF
 server {
     listen $ipaddr:443 ssl http2;
@@ -141,10 +135,8 @@ server {
     }
 EOF &>> $logfile
 error_check 'Site configured'
-
 mv /tmp/kibana /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana
-
 
 ##Create and restart service
 systemctl enable nginx.service
